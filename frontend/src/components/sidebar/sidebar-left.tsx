@@ -4,7 +4,6 @@ import * as React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Bot, Menu, Store, Plus, Zap, Plug, ChevronRight, Loader2 } from 'lucide-react';
-import { Bot, Menu, Store, Plus, Zap, ChevronRight, Loader2 } from 'lucide-react';
 
 import { NavAgents } from '@/components/sidebar/nav-agents';
 import { NavUserWithTeams } from '@/components/sidebar/nav-user-with-teams';
@@ -93,7 +92,6 @@ export function SidebarLeft({
   const searchParams = useSearchParams();
   const { flags, loading: flagsLoading } = useFeatureFlags(['custom_agents', 'agent_marketplace']);
   const customAgentsEnabled = flags.custom_agents;
-  const marketplaceEnabled = flags.agent_marketplace;
   const [showNewAgentDialog, setShowNewAgentDialog] = useState(false);
 
   // Close mobile menu on page navigation
@@ -103,14 +101,6 @@ export function SidebarLeft({
     }
   }, [pathname, searchParams, isMobile, setOpenMobile]);
 
-  const handleAgentsClick = () => {
-    if (state === 'collapsed') {
-      // If sidebar is collapsed, expand it and navigate to My Agents
-      setOpen(true);
-      router.push('/agents?tab=my-agents');
-    }
-    // If expanded, do nothing (let the CollapsibleTrigger handle it)
-  };
 
   
   useEffect(() => {

@@ -63,12 +63,7 @@ export const MODELS = {
 
   // Premium/Paid tier models (require subscription)
   'openrouter/x-ai/grok-4': { 
-
-
-  // Premium/Paid tier models (require subscription)
-  'openrouter/x-ai/grok-4': { 
     tier: 'premium', 
-    priority: 97,
     priority: 97,
     recommended: false,
     lowQuality: false
@@ -79,7 +74,7 @@ export const MODELS = {
     priority: 99,
     recommended: false,
     lowQuality: false
-  },
+  }
 };
 
 // Helper to check if a user can access a model based on subscription status
