@@ -36,7 +36,7 @@ MODELS = {
             "input_cost_per_million_tokens": 1.10,
             "output_cost_per_million_tokens": 4.40
         },
-        "tier_availability": ["free", "paid"]
+        "tier_availability": ["paid"]
     },
 
     "openrouter/openai/gpt-5-mini": {
