@@ -31,20 +31,19 @@ MODELS = {
 
 
     "openrouter/openai/o4-mini-high": {
-        "aliases": ["o4-mini 🧠⚖️💰"],
+        "aliases": ["GPT-o4-mh 🧠⚖️💰"],
         "pricing": {
-            "input_cost_per_million_tokens": 0.25,
-            "output_cost_per_million_tokens": 2.00
+            "input_cost_per_million_tokens": 1.10,
+            "output_cost_per_million_tokens": 4.40
         },
-        "tier_availability": ["free", "paid"]
         "tier_availability": ["free", "paid"]
     },
 
     "openrouter/openai/gpt-5-mini": {
         "aliases": ["GPT-5-M 🤖💰"],
         "pricing": {
-            "input_cost_per_million_tokens": 1.1,
-            "output_cost_per_million_tokens": 4.4
+            "input_cost_per_million_tokens": 0.25,
+            "output_cost_per_million_tokens": 2.00
         },
         "tier_availability": ["free", "paid"]
     },
