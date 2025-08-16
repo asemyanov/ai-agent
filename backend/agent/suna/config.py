@@ -21,7 +21,7 @@ class SunaConfig:
         "web_search_tool": True,
         "sb_vision_tool": True,
         "sb_image_edit_tool": True,
-        "data_providers_tool": True,
+        "data_providers_tool": False,
         "sb_presentation_outline_tool": True,
         "sb_presentation_tool": True,
         "sb_sheets_tool": True,
