@@ -243,7 +243,7 @@ export function DashboardContent() {
         )}
         <div className={cn(
           "flex flex-col min-h-screen px-4 items-center justify-center",
-          // customAgentsEnabled ? "items-center pt-20" : "items-center justify-center"
+          customAgentsEnabled ? "items-center pt-20" : "items-center justify-center"
         )}>
           <div className="w-[650px] max-w-[90%]">
             <div className="flex flex-col items-center text-center w-full">

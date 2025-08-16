@@ -245,7 +245,6 @@ export default function APIKeysPage() {
           </p>
         </div>
 
-        {/* SDK Beta Notice */}
         <Card className="border-blue-200/60 bg-gradient-to-br from-blue-50/80 to-indigo-50/40 dark:from-blue-950/20 dark:to-indigo-950/10 dark:border-blue-800/30">
           <CardContent className="">
             <div className="flex items-start gap-4">
@@ -285,7 +284,6 @@ export default function APIKeysPage() {
           </CardContent>
         </Card>
 
-        {/* Header Actions */}
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Shield className="w-4 h-4" />
@@ -394,7 +392,6 @@ export default function APIKeysPage() {
           </Dialog>
         </div>
 
-        {/* API Keys List */}
         {isLoading ? (
           <div className="grid gap-4">
             {[1, 2, 3].map((i) => (
@@ -562,7 +559,6 @@ export default function APIKeysPage() {
           </div>
         )}
 
-        {/* Show Created API Key Dialog */}
         <Dialog open={showCreatedKey} onOpenChange={setShowCreatedKey}>
           <DialogContent className="max-w-md">
             <DialogHeader>
