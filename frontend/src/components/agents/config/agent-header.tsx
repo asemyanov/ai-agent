@@ -1,5 +1,5 @@
 import React, { useState, useRef, KeyboardEvent } from 'react';
-import { Sparkles, Settings, Download, Image as ImageIcon } from 'lucide-react';
+import { Sparkles, Settings, Download, Image as ImageIcon, MoreHorizontal } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -8,6 +8,12 @@ import { toast } from 'sonner';
 import { KortixLogo } from '@/components/sidebar/kortix-logo';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { 
+  DropdownMenu, 
+  DropdownMenuContent, 
+  DropdownMenuItem, 
+  DropdownMenuTrigger 
+} from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { ProfilePictureDialog } from './profile-picture-dialog';
 import { AgentVersionSwitcher } from '../agent-version-switcher';
@@ -88,6 +94,39 @@ export function AgentHeader({
       onProfileImageSave(url);
     } else {
       onFieldChange('profile_image_url', url);
+    }
+  };
+
+  const startEditing = () => {
+    if (isNameEditable) {
+      setIsEditing(true);
+      setEditName(displayData.name);
+      // Focus the input after it's rendered
+      setTimeout(() => {
+        inputRef.current?.focus();
+        inputRef.current?.select();
+      }, 0);
+    }
+  };
+
+  const saveNewName = async () => {
+    if (editName.trim() !== displayData.name && editName.trim() !== '') {
+      if (onNameSave) {
+        await onNameSave(editName.trim());
+      } else {
+        handleNameChange(editName.trim());
+      }
+    }
+    setIsEditing(false);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      saveNewName();
+    } else if (e.key === 'Escape') {
+      setIsEditing(false);
+      setEditName(displayData.name);
     }
   };
 

@@ -14,7 +14,7 @@ interface AgentBuilderTabProps {
   };
   isViewingOldVersion: boolean;
   onFieldChange: (field: string, value: any) => void;
-  onStyleChange: (emoji: string, color: string) => void;
+  onStyleChange?: (emoji: string, color: string) => void;
   agentMetadata?: {
     is_suna_default?: boolean;
   };
@@ -25,7 +25,7 @@ export function AgentBuilderTab({
   displayData,
   isViewingOldVersion,
   onFieldChange,
-  onStyleChange,
+  onStyleChange = () => {},
   agentMetadata,
 }: AgentBuilderTabProps) {
   if (isViewingOldVersion) {

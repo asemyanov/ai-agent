@@ -75,8 +75,7 @@ export function DashboardContent() {
   const selectedAgent = selectedAgentId
     ? agents.find(agent => agent.agent_id === selectedAgentId)
     : null;
-  const displayName = selectedAgent?.name || 'MEVO';
-  const agentAvatar = selectedAgent?.avatar;
+  const displayName = selectedAgent?.name || 'MEVO Default Agent';
   const isSunaAgent = selectedAgent?.metadata?.is_suna_default || false;
 
   const threadQuery = useThreadQuery(initiatedThreadId || '');

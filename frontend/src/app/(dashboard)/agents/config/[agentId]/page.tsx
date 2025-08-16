@@ -33,8 +33,6 @@ interface FormData {
   custom_mcps: any[];
   is_default: boolean;
   profile_image_url?: string;
-  avatar?: string;
-  avatar_color?: string;
 }
 
 export default function AgentConfigurationPage() {
@@ -62,8 +60,6 @@ export default function AgentConfigurationPage() {
     custom_mcps: [],
     is_default: false,
     profile_image_url: '',
-    avatar: '',
-    avatar_color: '',
   });
 
   const [originalData, setOriginalData] = useState<FormData>(formData);
@@ -96,8 +92,6 @@ export default function AgentConfigurationPage() {
       custom_mcps: configSource.custom_mcps || [],
       is_default: agent.is_default || false,
       profile_image_url: agent.profile_image_url || '',
-      avatar: agent.avatar || '',
-      avatar_color: agent.avatar_color || '',
     };
     
     setFormData(initialData);
@@ -464,17 +458,6 @@ export default function AgentConfigurationPage() {
     }
   }, [isViewingOldVersion, formData, agent, agentId, createVersionMutation, isSaving]);
 
-  const handleStyleChange = useCallback((emoji: string, color: string) => {
-    if (isViewingOldVersion) {
-      toast.error('Cannot edit old versions. Please activate this version first to make changes.');
-      return;
-    }
-    setFormData(prev => ({
-      ...prev,
-      avatar: emoji,
-      avatar_color: color
-    }));
-  }, [isViewingOldVersion]);
 
   const handleActivateVersion = useCallback(async (versionId: string) => {
     try {
@@ -539,13 +522,7 @@ export default function AgentConfigurationPage() {
     custom_mcps: versionData.custom_mcps || [],
     is_default: agent?.is_default || false,
     profile_image_url: agent?.profile_image_url || '',
-    avatar: agent?.avatar || '',
-    avatar_color: agent?.avatar_color || '',
   } : formData;
-
-  const currentStyle = displayData.avatar && displayData.avatar_color
-    ? { avatar: displayData.avatar, color: displayData.avatar_color }
-    : { avatar: '🤖', color: '#3b82f6' };
 
 
 
@@ -669,7 +646,6 @@ export default function AgentConfigurationPage() {
                       displayData={displayData}
                           isViewingOldVersion={isViewingOldVersion}
                       onFieldChange={handleFieldChange}
-                      onStyleChange={handleStyleChange}
                       agentMetadata={agent?.metadata}
                     />
                   </TabsContent>
@@ -766,7 +742,6 @@ export default function AgentConfigurationPage() {
                       displayData={displayData}
                           isViewingOldVersion={isViewingOldVersion}
                       onFieldChange={handleFieldChange}
-                      onStyleChange={handleStyleChange}
                       agentMetadata={agent?.metadata}
                     />
                   </TabsContent>
