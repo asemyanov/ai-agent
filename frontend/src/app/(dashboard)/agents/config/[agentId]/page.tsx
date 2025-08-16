@@ -9,9 +9,7 @@ import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useUpdateAgent } from '@/hooks/react-query/agents/use-agents';
 import { useCreateAgentVersion, useActivateAgentVersion } from '@/hooks/react-query/agents/use-agent-versions';
-import { useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
-import { AgentPreview } from '../../../../../components/agents/agent-preview';
 import { AgentBuilderChat } from '../../../../../components/agents/agent-builder-chat';
 import { AgentVersionSwitcher } from '@/components/agents/agent-version-switcher';
 import { CreateVersionButton } from '@/components/agents/create-version-button';
@@ -19,10 +17,9 @@ import { useAgentVersionData } from '../../../../../hooks/use-agent-version-data
 import { useSearchParams } from 'next/navigation';
 import { useAgentVersionStore } from '../../../../../lib/stores/agent-version-store';
 
-import { cn } from '@/lib/utils';
 
 import { AgentHeader, VersionAlert, AgentBuilderTab, ConfigurationTab } from '@/components/agents/config';
-
+import { UpcomingRunsDropdown } from '@/components/agents/upcoming-runs-dropdown';
 import { DEFAULT_AGENTPRESS_TOOLS } from '@/components/agents/tools';
 import { useExportAgent } from '@/hooks/react-query/agents/use-agent-export-import';
 
@@ -36,18 +33,18 @@ interface FormData {
   custom_mcps: any[];
   is_default: boolean;
   profile_image_url?: string;
+  avatar?: string;
+  avatar_color?: string;
 }
 
 export default function AgentConfigurationPage() {
   const params = useParams();
   const agentId = params.agentId as string;
-  const queryClient = useQueryClient();
 
   const { agent, versionData, isViewingOldVersion, isLoading, error } = useAgentVersionData({ agentId });
   const searchParams = useSearchParams();
   const tabParam = searchParams.get('tab');
   const initialAccordion = searchParams.get('accordion');
-  const versionParam = searchParams.get('version');  // Add this line
   const { setHasUnsavedChanges } = useAgentVersionStore();
   
   const updateAgentMutation = useUpdateAgent();
@@ -65,6 +62,8 @@ export default function AgentConfigurationPage() {
     custom_mcps: [],
     is_default: false,
     profile_image_url: '',
+    avatar: '',
+    avatar_color: '',
   });
 
   const [originalData, setOriginalData] = useState<FormData>(formData);
@@ -97,6 +96,8 @@ export default function AgentConfigurationPage() {
       custom_mcps: configSource.custom_mcps || [],
       is_default: agent.is_default || false,
       profile_image_url: agent.profile_image_url || '',
+      avatar: agent.avatar || '',
+      avatar_color: agent.avatar_color || '',
     };
     
     setFormData(initialData);
@@ -165,7 +166,7 @@ export default function AgentConfigurationPage() {
     } finally {
       setIsSaving(false);
     }
-  }, [agent, formData, originalData, isViewingOldVersion, agentId, createVersionMutation, updateAgentMutation, isSaving, queryClient]);
+  }, [agent, formData, originalData, isViewingOldVersion, agentId, createVersionMutation, updateAgentMutation, isSaving]);
 
   // Check for unsaved changes
   const hasUnsavedChanges = JSON.stringify(formData) !== JSON.stringify(originalData);
@@ -274,7 +275,7 @@ export default function AgentConfigurationPage() {
     setIsSaving(true);
     
     try {
-      const result = await createVersionMutation.mutateAsync({
+      await createVersionMutation.mutateAsync({
         agentId,
         data: saveData
       });
@@ -289,7 +290,7 @@ export default function AgentConfigurationPage() {
     } finally {
       setIsSaving(false);
     }
-  }, [isViewingOldVersion, formData, agent, agentId, createVersionMutation, isSaving, originalData]);
+  }, [isViewingOldVersion, formData, agent, agentId, createVersionMutation, isSaving]);
 
   const handleProfileImageSave = useCallback(async (profileImageUrl: string | null) => {
     if (!agent || isViewingOldVersion || isSaving) {
@@ -348,7 +349,7 @@ export default function AgentConfigurationPage() {
     setIsSaving(true);
     
     try {
-      const result = await createVersionMutation.mutateAsync({
+      await createVersionMutation.mutateAsync({
         agentId,
         data: saveData
       });
@@ -398,7 +399,7 @@ export default function AgentConfigurationPage() {
     setIsSaving(true);
     
     try {
-      const result = await createVersionMutation.mutateAsync({
+      await createVersionMutation.mutateAsync({
         agentId,
         data: saveData
       });
@@ -412,7 +413,7 @@ export default function AgentConfigurationPage() {
     } finally {
       setIsSaving(false);
     }
-  }, [isViewingOldVersion, formData, agent, agentId, createVersionMutation, isSaving, originalData]);
+  }, [isViewingOldVersion, formData, agent, agentId, createVersionMutation, isSaving]);
 
   const handleMCPChange = useCallback(async (updates: { configured_mcps: any[]; custom_mcps: any[] }) => {
     if (isViewingOldVersion) {
@@ -439,7 +440,7 @@ export default function AgentConfigurationPage() {
     setIsSaving(true);
     
     try {
-      const result = await createVersionMutation.mutateAsync({
+      await createVersionMutation.mutateAsync({
         agentId,
         data: {
           system_prompt: agent?.metadata?.is_suna_default ? '' : newFormData.system_prompt,
@@ -463,6 +464,17 @@ export default function AgentConfigurationPage() {
     }
   }, [isViewingOldVersion, formData, agent, agentId, createVersionMutation, isSaving]);
 
+  const handleStyleChange = useCallback((emoji: string, color: string) => {
+    if (isViewingOldVersion) {
+      toast.error('Cannot edit old versions. Please activate this version first to make changes.');
+      return;
+    }
+    setFormData(prev => ({
+      ...prev,
+      avatar: emoji,
+      avatar_color: color
+    }));
+  }, [isViewingOldVersion]);
 
   const handleActivateVersion = useCallback(async (versionId: string) => {
     try {
@@ -527,14 +539,15 @@ export default function AgentConfigurationPage() {
     custom_mcps: versionData.custom_mcps || [],
     is_default: agent?.is_default || false,
     profile_image_url: agent?.profile_image_url || '',
+    avatar: agent?.avatar || '',
+    avatar_color: agent?.avatar_color || '',
   } : formData;
 
+  const currentStyle = displayData.avatar && displayData.avatar_color
+    ? { avatar: displayData.avatar, color: displayData.avatar_color }
+    : { avatar: '🤖', color: '#3b82f6' };
 
-  const previewAgent = {
-    ...agent,
-    ...displayData,
-    agent_id: agentId,
-  };
+
 
   return (
     <div className="h-screen flex flex-col bg-background">
@@ -685,8 +698,6 @@ export default function AgentConfigurationPage() {
                 agentId={agentId}
                 formData={displayData}
                 handleFieldChange={handleFieldChange}
-                handleStyleChange={handleStyleChange}
-                currentStyle={currentStyle}
               />
             </div>
           </div>
@@ -796,8 +807,6 @@ export default function AgentConfigurationPage() {
                   agentId={agentId}
                   formData={displayData}
                   handleFieldChange={handleFieldChange}
-                  handleStyleChange={handleStyleChange}
-                  currentStyle={currentStyle}
                 />
               </div>
             </DrawerContent>
