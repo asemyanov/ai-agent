@@ -1,7 +1,10 @@
 'use client';
 
-import React, { useState, Suspense, useEffect, useRef } from 'react';
+import React, { useState, Suspense, useEffect, useRef, useCallback } from 'react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { Menu } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import {
   ChatInput,
@@ -52,6 +55,7 @@ export function DashboardContent() {
     runningCount: number;
     runningThreadIds: string[];
   } | null>(null);
+  const [openMobile, setOpenMobile] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
   const isMobile = useIsMobile();
@@ -93,7 +97,7 @@ export function DashboardContent() {
       console.log('📞 Calling initializeFromAgents');
       initializeFromAgents(agents, undefined, setSelectedAgent);
     }
-  }, [agents, initializeFromAgents, setSelectedAgent]);
+  }, [agents, selectedAgentId, initializeFromAgents, setSelectedAgent]);
 
   useEffect(() => {
     const agentIdFromUrl = searchParams.get('agent_id');
@@ -117,7 +121,7 @@ export function DashboardContent() {
     }
   }, [threadQuery.data, initiatedThreadId, router]);
 
-  const handleSubmit = async (
+  const handleSubmit = useCallback(async (
     message: string,
     options?: {
       model_name?: string;
@@ -184,7 +188,7 @@ export function DashboardContent() {
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [selectedAgentId, isSubmitting, initiateAgentMutation, onOpen]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
