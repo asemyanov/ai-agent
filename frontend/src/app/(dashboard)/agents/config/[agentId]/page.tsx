@@ -33,6 +33,8 @@ interface FormData {
   custom_mcps: any[];
   is_default: boolean;
   profile_image_url?: string;
+  avatar?: string;
+  avatar_color?: string;
 }
 
 export default function AgentConfigurationPage() {
@@ -60,6 +62,8 @@ export default function AgentConfigurationPage() {
     custom_mcps: [],
     is_default: false,
     profile_image_url: '',
+    avatar: '🤖',
+    avatar_color: '#6366f1',
   });
 
   const [originalData, setOriginalData] = useState<FormData>(formData);
@@ -92,6 +96,8 @@ export default function AgentConfigurationPage() {
       custom_mcps: configSource.custom_mcps || [],
       is_default: agent.is_default || false,
       profile_image_url: agent.profile_image_url || '',
+      avatar: agent.avatar || '🤖',
+      avatar_color: agent.avatar_color || '#6366f1',
     };
     
     setFormData(initialData);
@@ -148,6 +154,9 @@ export default function AgentConfigurationPage() {
           description: formData.description,
           is_default: formData.is_default,
           profile_image_url: formData.profile_image_url || undefined,
+          // TODO: Add avatar support to backend API
+          // avatar: formData.avatar,
+          // avatar_color: formData.avatar_color,
         })
       ]);
       
@@ -219,6 +228,9 @@ export default function AgentConfigurationPage() {
         description: formData.description,
         is_default: formData.is_default,
         profile_image_url: formData.profile_image_url || undefined,
+        // TODO: Add avatar support to backend API
+        // avatar: formData.avatar,
+        // avatar_color: formData.avatar_color,
       });
       
       // Update original data to reflect the save
@@ -302,6 +314,9 @@ export default function AgentConfigurationPage() {
         description: formData.description,
         is_default: formData.is_default,
         profile_image_url: profileImageUrl || undefined,
+        // TODO: Add avatar support to backend API
+        // avatar: formData.avatar,
+        // avatar_color: formData.avatar_color,
       });
       
       setOriginalData(prev => ({ ...prev, profile_image_url: profileImageUrl || '' }));
@@ -310,6 +325,38 @@ export default function AgentConfigurationPage() {
       console.error('❌ Profile image save error:', error);
       toast.error('Failed to save profile image');
       setFormData(prev => ({ ...prev, profile_image_url: originalData.profile_image_url }));
+    } finally {
+      setIsSaving(false);
+    }
+  }, [isViewingOldVersion, formData, agent, agentId, updateAgentMutation, isSaving, originalData]);
+
+  const handleStyleChange = useCallback(async (emoji: string, color: string) => {
+    if (!agent || isViewingOldVersion || isSaving) {
+      return;
+    }
+    
+    setFormData(prev => ({ ...prev, avatar: emoji, avatar_color: color }));
+    
+    setIsSaving(true);
+    
+    try {
+      await updateAgentMutation.mutateAsync({
+        agentId,
+        name: formData.name,
+        description: formData.description,
+        is_default: formData.is_default,
+        profile_image_url: formData.profile_image_url || undefined,
+        // TODO: Add avatar support to backend API
+        // avatar: emoji,
+        // avatar_color: color,
+      });
+      
+      setOriginalData(prev => ({ ...prev, avatar: emoji, avatar_color: color }));
+      toast.success('Agent style saved');
+    } catch (error) {
+      console.error('❌ Style save error:', error);
+      toast.error('Failed to save agent style');
+      setFormData(prev => ({ ...prev, avatar: originalData.avatar, avatar_color: originalData.avatar_color }));
     } finally {
       setIsSaving(false);
     }
@@ -522,6 +569,8 @@ export default function AgentConfigurationPage() {
     custom_mcps: versionData.custom_mcps || [],
     is_default: agent?.is_default || false,
     profile_image_url: agent?.profile_image_url || '',
+    avatar: agent?.avatar || '🤖',
+    avatar_color: agent?.avatar_color || '#6366f1',
   } : formData;
 
 
@@ -646,6 +695,7 @@ export default function AgentConfigurationPage() {
                       displayData={displayData}
                           isViewingOldVersion={isViewingOldVersion}
                       onFieldChange={handleFieldChange}
+                      onStyleChange={handleStyleChange}
                       agentMetadata={agent?.metadata}
                     />
                   </TabsContent>
@@ -742,6 +792,7 @@ export default function AgentConfigurationPage() {
                       displayData={displayData}
                           isViewingOldVersion={isViewingOldVersion}
                       onFieldChange={handleFieldChange}
+                      onStyleChange={handleStyleChange}
                       agentMetadata={agent?.metadata}
                     />
                   </TabsContent>

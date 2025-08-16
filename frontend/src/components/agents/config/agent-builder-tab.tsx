@@ -1,5 +1,8 @@
 import React from 'react';
 import { AgentPreview } from '../agent-preview';
+import { AvatarStylePicker } from './avatar-style-picker';
+import { Button } from '@/components/ui/button';
+import { Palette } from 'lucide-react';
 
 interface AgentBuilderTabProps {
   agentId: string;
@@ -11,6 +14,8 @@ interface AgentBuilderTabProps {
     configured_mcps: any[];
     custom_mcps: any[];
     is_default: boolean;
+    avatar?: string;
+    avatar_color?: string;
   };
   isViewingOldVersion: boolean;
   onFieldChange: (field: string, value: any) => void;
@@ -52,6 +57,39 @@ export function AgentBuilderTab({
 
   return (
     <div className="h-full overflow-y-auto">
+      {/* Avatar Style Customizer */}
+      {!isViewingOldVersion && onStyleChange && (
+        <div className="p-4 border-b bg-muted/30">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div 
+                className="w-10 h-10 rounded-xl flex items-center justify-center text-lg border"
+                style={{ 
+                  backgroundColor: (displayData.avatar_color || '#6366f1') + '20', 
+                  borderColor: (displayData.avatar_color || '#6366f1') + '40' 
+                }}
+              >
+                {displayData.avatar || '🤖'}
+              </div>
+              <div>
+                <h3 className="text-sm font-medium">Agent Style</h3>
+                <p className="text-xs text-muted-foreground">Customize avatar and color</p>
+              </div>
+            </div>
+            <AvatarStylePicker
+              currentEmoji={displayData.avatar}
+              currentColor={displayData.avatar_color}
+              onStyleChange={onStyleChange}
+            >
+              <Button variant="outline" size="sm">
+                <Palette className="w-4 h-4 mr-2" />
+                Customize
+              </Button>
+            </AvatarStylePicker>
+          </div>
+        </div>
+      )}
+      
       {previewAgent && <AgentPreview agent={previewAgent} agentMetadata={agentMetadata} />}
     </div>
   );

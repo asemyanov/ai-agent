@@ -43,6 +43,8 @@ interface Agent {
     };
   };
   profile_image_url?: string;
+  avatar?: string;
+  avatar_color?: string;
 }
 
 interface AgentsGridProps {
@@ -98,11 +100,17 @@ const AgentModal: React.FC<AgentModalProps> = ({
               <div className="p-6">
                 <KortixLogo size={48} />
               </div>
-) : agent.profile_image_url ? (
+            ) : agent.profile_image_url ? (
               <img src={agent.profile_image_url} alt={agent.name} className="h-16 w-16 rounded-xl object-cover" />
             ) : (
-              <div className="h-16 w-16 rounded-xl bg-muted flex items-center justify-center">
-                <span className="text-lg font-semibold">{agent.name.charAt(0).toUpperCase()}</span>
+              <div 
+                className="h-16 w-16 rounded-xl flex items-center justify-center border"
+                style={{ 
+                  backgroundColor: `${agent.avatar_color || '#6366f1'}15`,
+                  borderColor: `${agent.avatar_color || '#6366f1'}30`
+                }}
+              >
+                <span className="text-2xl">{agent.avatar || '🤖'}</span>
               </div>
             )}
           </div>

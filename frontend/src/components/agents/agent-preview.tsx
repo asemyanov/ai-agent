@@ -27,6 +27,8 @@ interface Agent {
   created_at?: string;
   updated_at?: string;
   profile_image_url?: string;
+  avatar?: string;
+  avatar_color?: string;
 }
 
 interface AgentPreviewProps {
@@ -52,8 +54,8 @@ export const AgentPreview = ({ agent, agentMetadata }: AgentPreviewProps) => {
 
   const getAgentStyling = () => {
     return {
-      avatar: '🤖',
-      color: '#6366f1',
+      avatar: agent.avatar || '🤖',
+      color: agent.avatar_color || '#6366f1',
     };
   };
 
@@ -325,7 +327,12 @@ export const AgentPreview = ({ agent, agentMetadata }: AgentPreviewProps) => {
 
 
   return (
-    <div className="h-full flex flex-col bg-muted dark:bg-muted/30">
+    <div 
+      className="h-full flex flex-col bg-muted dark:bg-muted/30"
+      style={{
+        backgroundColor: `${color}08`, // Very light tint of the agent color
+      }}
+    >
       <div className="flex-shrink-0 flex items-center gap-3 px-8 py-8">
         <div className="flex-1">
         </div>
@@ -348,7 +355,13 @@ export const AgentPreview = ({ agent, agentMetadata }: AgentPreviewProps) => {
             agentData={agent}
             emptyStateComponent={
               <div className="flex flex-col items-center text-center text-muted-foreground/80">
-                <div className="flex w-20 aspect-square items-center justify-center rounded-2xl bg-muted-foreground/10 p-4 mb-4">
+                <div 
+                  className="flex w-20 aspect-square items-center justify-center rounded-2xl p-4 mb-4 border"
+                  style={{ 
+                    backgroundColor: `${color}15`,
+                    borderColor: `${color}30`
+                  }}
+                >
                   {isSunaAgent ? (
                     <KortixLogo size={36} />
                   ) : agent.profile_image_url ? (

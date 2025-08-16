@@ -71,6 +71,9 @@ interface AgentData extends BaseAgentData {
     };
     profile_image_url?: string;
   };
+  avatar?: string;
+  avatar_color?: string;
+  profile_image_url?: string;
 }
 
 type AgentCardData = MarketplaceData | TemplateData | AgentData;
@@ -338,7 +341,12 @@ const TemplateActions: React.FC<{
   </div>
 );
 
-const CardAvatar: React.FC<{ isSunaAgent?: boolean; profileImageUrl?: string; agentName?: string }> = ({ isSunaAgent = false, profileImageUrl, agentName }) => {
+const CardAvatar: React.FC<{ 
+  isSunaAgent?: boolean; 
+  profileImageUrl?: string; 
+  agentName?: string;
+  styling?: { avatar: string; color: string };
+}> = ({ isSunaAgent = false, profileImageUrl, agentName, styling }) => {
   if (isSunaAgent) {
     return (
       <div className="h-14 w-14 bg-muted border flex items-center justify-center rounded-2xl">
@@ -349,6 +357,19 @@ const CardAvatar: React.FC<{ isSunaAgent?: boolean; profileImageUrl?: string; ag
   if (profileImageUrl) {
     return (
       <img src={profileImageUrl} alt="Agent" className="h-14 w-14 rounded-2xl object-cover" />
+    );
+  }
+  if (styling) {
+    return (
+      <div 
+        className="h-14 w-14 border flex items-center justify-center rounded-2xl"
+        style={{
+          backgroundColor: `${styling.color}15`,
+          borderColor: `${styling.color}30`
+        }}
+      >
+        <span className="text-2xl">{styling.avatar}</span>
+      </div>
     );
   }
   return (
@@ -454,7 +475,12 @@ export const AgentCard: React.FC<AgentCardProps> = ({
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
       <div className="relative p-6 flex flex-col flex-1">
         <div className="flex items-start justify-between mb-4">
-          <CardAvatar isSunaAgent={isSunaAgent} profileImageUrl={(data as any)?.profile_image_url} agentName={data.name} />
+          <CardAvatar 
+            isSunaAgent={isSunaAgent} 
+            profileImageUrl={(data as any)?.profile_image_url} 
+            agentName={data.name}
+            styling={styling}
+          />
           <div className="flex items-center gap-2">
             {renderBadge()}
           </div>
