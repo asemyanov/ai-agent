@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import {
   streamAgent,
   getAgentStatus,
@@ -7,6 +8,7 @@ import {
   getMessages,
 } from '@/lib/api';
 import { toast } from 'sonner';
+import { fileQueryKeys } from '@/hooks/react-query/files/use-file-queries';
 import {
   UnifiedMessage,
   ParsedContent,
@@ -85,6 +87,8 @@ export function useAgentStream(
   >([]);
   const [toolCall, setToolCall] = useState<ParsedContent | null>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const queryClient = useQueryClient();
 
   const streamCleanupRef = useRef<(() => void) | null>(null);
   const isMountedRef = useRef<boolean>(true);
@@ -197,7 +201,15 @@ export function useAgentStream(
       setAgentRunId(null);
       currentRunIdRef.current = null;
       
-      // Message refetch disabled - optimistic messages will handle updates
+      // Invalidate file queries when agent completes successfully
+      if (finalStatus === 'completed' || finalStatus === 'stopped') {
+        // Invalidate all file content and directory queries to ensure fresh data
+        queryClient.invalidateQueries({
+          queryKey: fileQueryKeys.all,
+        });
+        
+        console.log('[useAgentStream] Invalidated file queries after agent completion');
+      }
 
       // If the run was stopped or completed, try to get final status to update nonRunning set (keep this)
       if (
@@ -210,7 +222,7 @@ export function useAgentStream(
         });
       }
     },
-    [agentRunId, updateStatus],
+    [agentRunId, updateStatus, queryClient],
   );
 
   // --- Stream Callback Handlers ---

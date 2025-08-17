@@ -32,7 +32,7 @@ export const AgentBuilderChat = React.memo(function AgentBuilderChat({
   const [messages, setMessages] = useState<UnifiedMessage[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [agentStatus, setAgentStatus] = useState<'idle' | 'running' | 'connecting' | 'error'>('idle');
-  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved'>('idle');
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'tool_completed'>('idle');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hasStartedConversation, setHasStartedConversation] = useState(false);
 
@@ -165,6 +165,17 @@ export const AgentBuilderChat = React.memo(function AgentBuilderChat({
           setTimeout(() => setSaveStatus('idle'), 2000);
         }
         break;
+      case 'tool_completed':
+        // Set tool_completed status and invalidate queries to refresh UI
+        setSaveStatus('tool_completed');
+        
+        // Invalidate agent queries to refresh UI after tool execution
+        queryClient.invalidateQueries({ queryKey: agentKeys.all });
+        queryClient.invalidateQueries({ queryKey: agentKeys.detail(agentId) });
+        
+        console.log('[AgentBuilderChat] Invalidated agent queries after tool completion');
+        setTimeout(() => setSaveStatus('idle'), 1500);
+        break;
       case 'connecting':
         setAgentStatus('connecting');
         break;
@@ -188,7 +199,6 @@ export const AgentBuilderChat = React.memo(function AgentBuilderChat({
     status: streamHookStatus,
     textContent: streamingTextContent,
     toolCall: streamingToolCall,
-    error: streamError,
     agentRunId: currentHookRunId,
     startStreaming,
     stopStreaming,
