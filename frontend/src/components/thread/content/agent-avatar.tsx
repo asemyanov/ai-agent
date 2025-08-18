@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
+import { Bot } from 'lucide-react';
 import { useAgent } from '@/hooks/react-query/agents/use-agents';
-import { KortixLogo } from '@/components/sidebar/kortix-logo';
 import { Skeleton } from '@/components/ui/skeleton';
 
 interface AgentAvatarProps {
@@ -30,12 +30,19 @@ export const AgentAvatar: React.FC<AgentAvatarProps> = ({
   }
 
   if (!agent && !agentId) {
-    return <KortixLogo size={size} />;
+    return null;
   }
 
   const isSuna = agent?.metadata?.is_suna_default;
   if (isSuna) {
-    return <KortixLogo size={size} />;
+    return (
+      <div 
+        className={`flex items-center justify-center ${className}`}
+        style={{ width: size, height: size }}
+      >
+        <Bot size={size * 0.7} />
+      </div>
+    );
   }
 
   if (agent?.profile_image_url) {
@@ -50,7 +57,14 @@ export const AgentAvatar: React.FC<AgentAvatarProps> = ({
   }
 
 
-  return <KortixLogo size={size} />;
+  return (
+    <div 
+      className={`flex items-center justify-center ${className}`}
+      style={{ width: size, height: size }}
+    >
+      <Bot size={size * 0.7} />
+    </div>
+  );
 };
 
 interface AgentNameProps {
