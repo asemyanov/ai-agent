@@ -157,7 +157,7 @@ const LoggedInMenu: React.FC<UnifiedConfigMenuProps> = ({
                                     {renderAgentIcon(displayAgent)}
                                 </div>
                                 <span className="truncate text-sm">
-                                    {displayAgent?.name || 'Suna'}
+                                    {displayAgent?.name || 'MEVO Default Agent'}
                                 </span>
                                 <ChevronDown size={12} className="opacity-60" />
                             </div>
@@ -361,7 +361,7 @@ const GuestMenu: React.FC<UnifiedConfigMenuProps> = () => {
                                 <div className="flex-shrink-0">
                                     <KortixLogo size={16} />
                                 </div>
-                                <span className="truncate text-sm">Suna</span>
+                                <span className="truncate text-sm">MEVO Default Agent</span>
                                 <ChevronDown size={12} className="opacity-60" />
                             </div>
                         </Button>

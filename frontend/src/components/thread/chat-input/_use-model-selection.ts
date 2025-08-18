@@ -7,8 +7,10 @@ import { useAvailableModels } from '@/hooks/react-query/subscriptions/use-model'
 
 export const STORAGE_KEY_MODEL = 'suna-preferred-model-v3';
 export const STORAGE_KEY_CUSTOM_MODELS = 'customModels';
-export const DEFAULT_PREMIUM_MODEL_ID = 'claude-sonnet-4';
-export const DEFAULT_FREE_MODEL_ID = 'moonshotai/kimi-k2';
+export const DEFAULT_PREMIUM_MODEL_ID = 'openrouter/google/gemini-2.5-pro';
+// Kimi2 has been commented out, Gemini 2.5 Pro is now the default free model.
+export const DEFAULT_FREE_MODEL_ID = 'openrouter/google/gemini-2.5-flash';
+// export const DEFAULT_FREE_MODEL_ID = 'openrouter/moonshotai/kimi-k2';
 
 export type SubscriptionStatus = 'no_subscription' | 'active';
 
@@ -29,76 +31,53 @@ export interface CustomModel {
 
 // SINGLE SOURCE OF TRUTH for all model data - aligned with backend constants
 export const MODELS = {
-  // Premium tier models (require subscription)
-  'claude-sonnet-4': { 
-    tier: 'premium',
-    priority: 100, 
+  // Free tier models (available to all users)
+  'bedrock/us.anthropic.claude-sonnet-4-20250514-v1:0': {
+    tier: 'free',
+    priority: 98,
     recommended: true,
     lowQuality: false
   },
 
-  // 'gemini-flash-2.5': { 
-  //   tier: 'free', 
-  //   priority: 70,
-  //   recommended: false,
-  //   lowQuality: false
-  // },
-  // 'qwen3': { 
-  //   tier: 'free', 
-  //   priority: 60,
-  //   recommended: false,
-  //   lowQuality: false
-  // },
+  'openrouter/google/gemini-2.5-pro': { 
+    tier: 'premium', 
+    priority: 95,
+    recommended: true,
+    lowQuality: false
+  },
 
-  // Free tier models (available to all users)
-  'moonshotai/kimi-k2': { 
+  'openrouter/google/gemini-2.5-flash': { 
     tier: 'free', 
     priority: 100,
     recommended: true,
     lowQuality: false
   },
-  'grok-4': { 
+  'openrouter/x-ai/grok-4': { 
     tier: 'premium', 
     priority: 94,
-    recommended: false,
+    recommended: true,
     lowQuality: false
   },
-  'sonnet-3.7': { 
-    tier: 'premium', 
-    priority: 93, 
-    recommended: false,
-    lowQuality: false
-  },
-  'google/gemini-2.5-pro': { 
-    tier: 'premium', 
-    priority: 96,
-    recommended: false,
-    lowQuality: false
-  },
-  'sonnet-3.5': { 
-    tier: 'premium', 
-    priority: 90,
-    recommended: false,
-    lowQuality: false
-  },
-  'gpt-5': { 
+
+
+  'openrouter/openai/gpt-5': { 
     tier: 'premium', 
     priority: 99,
-    recommended: false,
+    recommended: true,
     lowQuality: false
   },
-  'gpt-5-mini': { 
-    tier: 'premium', 
+  'openrouter/openai/gpt-5-mini': { 
+    tier: 'free', 
     priority: 98,
-    recommended: false,
+    recommended: true,
     lowQuality: false
   },
-  'gemini-2.5-flash:thinking': { 
-    tier: 'premium', 
-    priority: 84,
-    recommended: false,
-    lowQuality: false
-  },
+  // 'gemini-2.5-flash:thinking': { 
+  //   tier: 'premium', 
+  //   priority: 84,
+  //   recommended: false,
+  //   lowQuality: false
+  // },
   // 'deepseek/deepseek-chat-v3-0324': { 
   //   tier: 'free', 
   //   priority: 75,
@@ -201,13 +180,13 @@ export const useModelSelection = () => {
       models = [
         { 
           id: DEFAULT_FREE_MODEL_ID, 
-          label: 'DeepSeek', 
+          label: 'Balanced 🧠⚖️💰', 
           requiresSubscription: false,
           priority: MODELS[DEFAULT_FREE_MODEL_ID]?.priority || 50
         },
         { 
           id: DEFAULT_PREMIUM_MODEL_ID, 
-          label: 'Sonnet 4', 
+          label: 'Balanced 🧠⚖️💰', 
           requiresSubscription: true, 
           priority: MODELS[DEFAULT_PREMIUM_MODEL_ID]?.priority || 100
         },
@@ -264,20 +243,14 @@ export const useModelSelection = () => {
     
     // Sort models consistently in one place:
     // 1. First by recommended (recommended first)
-    // 2. Then by priority (higher first)
-    // 3. Finally by name (alphabetical)
+    // 2. Then by name (alphabetical)
     const sortedModels = models.sort((a, b) => {
       // First by recommended status
       if (a.recommended !== b.recommended) {
         return a.recommended ? -1 : 1;
       }
 
-      // Then by priority (higher first)
-      if (a.priority !== b.priority) {
-        return b.priority - a.priority;
-      }
-      
-      // Finally by name
+      // Then by name
       return a.label.localeCompare(b.label);
     });
     return sortedModels;

@@ -58,24 +58,24 @@ export interface PricingTier {
 }
 
 export const siteConfig = {
-  name: 'Kortix Suna',
-  description: 'The Generalist AI Worker that can act on your behalf.',
+  name: 'MEVO',
+  description: 'The general AI Agent that can act on your behalf.',
   cta: 'Start Free',
   url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
-  keywords: ['AI Worker', 'Generalist AI', 'Open Source AI', 'Autonomous Agent'],
+  keywords: ['AI Agent', 'General AI', 'Autonomous Agent'],
   links: {
-    email: 'support@kortix.ai',
-    twitter: 'https://x.com/kortixai',
-    // discord: 'https://discord.gg/kortixai',
-    github: 'https://github.com/Kortix-ai/Suna',
-    instagram: 'https://instagram.com/kortixai',
+    email: 'support@mevoagent.com',
+    twitter: 'https://x.com/mevoagent',
+    discord: 'https://discord.gg/mevoagent',
+    github: 'https://github.com/mevoagent',
+    instagram: 'https://instagram.com/mevoagent',
   },
   nav: {
     links: [
       { id: 1, name: 'Home', href: '#hero' },
       { id: 2, name: 'Process', href: '#process' },
       // { id: 3, name: 'Use Cases', href: '#use-cases' },
-      { id: 4, name: 'Open Source', href: '#open-source' },
+      //{ id: 4, name: 'Open Source', href: '#open-source' },
       { id: 5, name: 'Pricing', href: '#pricing' },
       { id: 6, name: 'Enterprise', href: '/enterprise' },
     ],
@@ -107,12 +107,12 @@ export const siteConfig = {
         />
       </svg>
     ),
-    badge: '100% OPEN SOURCE',
-    githubUrl: 'https://github.com/kortix-ai/suna',
-    title: 'Kortix – Build, manage and train your AI Workforce.',
+    badge: 'AI POWERED',
+    githubUrl: '',
+    title: 'MEVO. Your Custom AI Employee.',
     description:
-      'Kortix – open-source platform to build, manage and train your AI Workforce.',
-    inputPlaceholder: 'Ask Suna to...',
+      <>Transform Healthcare Operations with AI Employees that <span className="text-secondary">act</span> on your behalf.</>,
+    inputPlaceholder: 'Ask MEVO to...',
   },
   cloudPricingItems: [
     {
@@ -125,8 +125,8 @@ export const siteConfig = {
       /** @deprecated */
       hours: '60 min',
       features: [
-        '$5 free AI tokens included',
-        '2 custom agents',
+        '$10 free AI tokens included',
+        '5 custom agents',
         'Public projects',
         'Basic Models',
         'Community support',
@@ -198,7 +198,7 @@ export const siteConfig = {
         '20 custom agents',
         'Private projects',
         'Premium AI Models',
-        'Community support',
+        'Priority support',
       ],
       stripePriceId: config.SUBSCRIPTION_TIERS.TIER_12_100.priceId,
       yearlyStripePriceId: config.SUBSCRIPTION_TIERS.TIER_12_100_YEARLY.priceId,
@@ -503,62 +503,62 @@ export const siteConfig = {
     ],
   },
   featureSection: {
-    title: 'How Kortix Suna Works',
+    title: 'How MEVO Works',
     description:
-      'Discover how Kortix Suna transforms your commands into action in four easy steps',
+      'Discover how MEVO transforms your commands into action in four easy steps',
     items: [
       {
         id: 1,
         title: 'Request an Action',
         content:
-          'Speak or type your command—let Kortix Suna capture your intent. Your request instantly sets the process in motion.',
+          'Speak or type your command—let MEVO capture your intent. Your request instantly sets the process in motion.',
         image:
-          'https://images.unsplash.com/photo-1720371300677-ba4838fa0678?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+          '/screenshots/Screenshot1.png',
       },
       {
         id: 2,
         title: 'AI Understanding & Planning',
         content:
-          'Suna analyzes your request, understands the context, and develops a structured plan to complete the task efficiently.',
+          'MEVO analyzes your request, understands the context, and develops a structured plan to complete the task efficiently.',
         image:
-          'https://images.unsplash.com/photo-1686170287433-c95faf6d3608?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8fA%3D%3D',
+          '/screenshots/Screenshot2.png',
       },
       {
         id: 3,
         title: 'Autonomous Execution',
         content:
-          'Using its capabilities and integrations, Suna executes the task independently, handling any complexities along the way.',
+          'Using its capabilities and integrations, MEVO executes the task independently, handling any complexities along the way.',
         image:
-          'https://images.unsplash.com/photo-1720378042271-60aff1e1c538?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxMHx8fGVufDB8fHx8fA%3D%3D',
+          '/screenshots/Screenshot3.png',
       },
       {
         id: 4,
         title: 'Results & Learning',
         content:
-          'Suna delivers results and learns from each interaction, continuously improving its performance to better serve your needs.',
+          'MEVO delivers results and learns from each interaction, continuously improving its performance to better serve your needs.',
         image:
-          'https://images.unsplash.com/photo-1666882990322-e7f3b8df4f75?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D',
+          '/screenshots/Screenshot4.png',
       },
     ],
   },
   bentoSection: {
-    title: 'Empower Your Workflow with Kortix Suna',
+    title: 'Empower Your Workflow with MEVO',
     description:
-      'Let Kortix Suna act on your behalf with advanced AI capabilities, seamless integrations, and autonomous task execution.',
+      'Let MEVO act on your behalf with advanced AI capabilities, seamless integrations, and autonomous task execution.',
     items: [
       {
         id: 1,
         content: <FirstBentoAnimation />,
         title: 'Autonomous Task Execution',
         description:
-          'Experience true automation with Suna. Ask your AI Worker to complete tasks, research information, and handle complex workflows with minimal supervision.',
+          'Experience true automation with MEVO. Ask your AI Agent to complete tasks, research information, and handle complex workflows with minimal supervision.',
       },
       {
         id: 2,
         content: <SecondBentoAnimation />,
         title: 'Seamless Integrations',
         description:
-          'Connect Suna to your existing tools for a unified workflow. Boost productivity through AI-powered interconnected systems.',
+          'Connect MEVO to your existing tools for a unified workflow. Boost productivity through AI-powered interconnected systems.',
       },
       {
         id: 3,
@@ -572,21 +572,21 @@ export const siteConfig = {
         ),
         title: 'Intelligent Data Analysis',
         description:
-          "Transform raw data into actionable insights in seconds. Make better decisions with Suna's real-time, adaptive intelligence.",
+          "Transform raw data into actionable insights in seconds. Make better decisions with MEVO's real-time, adaptive intelligence.",
       },
       {
         id: 4,
         content: <FourthBentoAnimation once={false} />,
         title: 'Complete Customization',
         description:
-          'Tailor Suna to your specific needs. As an open source solution, you have full control over its capabilities, integrations, and implementation.',
+          'Tailor MEVO to your specific needs. As a flexible solution, you have full control over its capabilities, integrations, and implementation.',
       },
     ],
   },
   benefits: [
     {
       id: 1,
-      text: "Automate everyday tasks with Suna's powerful AI capabilities.",
+      text: "Automate everyday tasks with MEVO's powerful AI capabilities.",
       image: '/Device-6.png',
     },
     {
@@ -596,17 +596,17 @@ export const siteConfig = {
     },
     {
       id: 3,
-      text: 'Improve focus on high-value work as Suna handles the routine.',
+      text: 'Improve focus on high-value work as MEVO handles the routine.',
       image: '/Device-8.png',
     },
     {
       id: 4,
-      text: 'Access cutting-edge AI as an open source, transparent solution.',
+      text: 'Access cutting-edge AI as a reliable, transparent solution.',
       image: '/Device-1.png',
     },
   ],
   growthSection: {
-    title: 'Open Source & Secure',
+    title: 'Secure & Reliable',
     description:
       'Where advanced security meets complete transparency—designed to protect your data while providing full access to the code.',
     items: [
@@ -908,7 +908,7 @@ export const siteConfig = {
   },
   quoteSection: {
     quote:
-      'Kortix Suna has transformed how we approach everyday tasks. The level of automation it provides, combined with its open source nature, makes it an invaluable tool for our entire organization.',
+      'MEVO has transformed how we approach everyday tasks. The level of automation it provides, combined with its open source nature, makes it an invaluable tool for our entire organization.',
     author: {
       name: 'Alex Johnson',
       role: 'CTO, Innovatech',
@@ -916,9 +916,9 @@ export const siteConfig = {
     },
   },
   pricing: {
-    title: 'Open Source & Free Forever',
+    title: 'Flexible Pricing Plans',
     description:
-      'Kortix Suna is 100% open source and free to use. No hidden fees, no premium features locked behind paywalls.',
+      'MEVO is flexible pricing plans to fit your needs. No hidden fees, no premium features locked behind paywalls.',
     pricingItems: [
       {
         name: 'Community',
@@ -933,7 +933,7 @@ export const siteConfig = {
           'Community support',
         ],
         description: 'Perfect for individual users and developers',
-        buttonText: 'Hire Suna',
+        buttonText: 'Hire MEVO',
         buttonColor: 'bg-accent text-primary',
         isPopular: false,
       },
@@ -1183,7 +1183,7 @@ export const siteConfig = {
   faqSection: {
     title: 'Frequently Asked Questions',
     description:
-      "Answers to common questions about Kortix Suna and its capabilities. If you have any other questions, please don't hesitate to contact us.",
+      "Answers to common questions about MEVO and its capabilities. If you have any other questions, please don't hesitate to contact us.",
     faQitems: [
       {
         id: 1,
@@ -1193,33 +1193,33 @@ export const siteConfig = {
       },
       {
         id: 2,
-        question: 'How does Kortix Suna work?',
+        question: 'How does MEVO work?',
         answer:
-          'Kortix Suna works by analyzing your requirements, leveraging advanced AI algorithms to understand context, and executing tasks based on your instructions. It can integrate with your workflow, learn from feedback, and continuously improve its performance.',
+          'MEVO works by analyzing your requirements, leveraging advanced AI algorithms to understand context, and executing tasks based on your instructions. It can integrate with your workflow, learn from feedback, and continuously improve its performance.',
       },
       {
         id: 3,
-        question: 'Is Kortix Suna really free?',
+        question: 'Is MEVO really free?',
         answer:
-          'Yes, Kortix Suna is completely free and open source. We believe in democratizing AI technology and making it accessible to everyone. You can use it, modify it, and contribute to its development without any cost.',
+          'Yes, MEVO is completely free and open source. We believe in democratizing AI technology and making it accessible to everyone. You can use it, modify it, and contribute to its development without any cost.',
       },
       {
         id: 4,
-        question: 'Can I integrate Suna with my existing tools?',
+        question: 'Can I integrate MEVO with my existing tools?',
         answer:
-          'Yes, Kortix Suna is designed to be highly compatible with popular tools and platforms. We offer APIs and pre-built integrations for seamless connection with your existing workflow tools and systems.',
+          'Yes, MEVO is designed to be highly compatible with popular tools and platforms. We offer APIs and pre-built integrations for seamless connection with your existing workflow tools and systems.',
       },
       {
         id: 5,
-        question: 'How can I contribute to Kortix Suna?',
+        question: 'How can I contribute to MEVO?',
         answer:
-          'You can contribute to Kortix Suna by submitting pull requests on GitHub, reporting bugs, suggesting new features, or helping with documentation. Join our Discord community to connect with other contributors and Hire Suna.',
+          'You can contribute to MEVO by submitting pull requests on GitHub, reporting bugs, suggesting new features, or helping with documentation. Join our Discord community to connect with other contributors and Hire MEVO.',
       },
       {
         id: 6,
-        question: 'How does Kortix Suna save me time?',
+        question: 'How does MEVO save me time?',
         answer:
-          'Kortix Suna automates repetitive tasks, streamlines workflows, and provides quick solutions to common challenges. This automation and efficiency can save hours of manual work, allowing you to focus on more strategic activities.',
+          'MEVO automates repetitive tasks, streamlines workflows, and provides quick solutions to common challenges. This automation and efficiency can save hours of manual work, allowing you to focus on more strategic activities.',
       },
     ],
   },
@@ -1235,11 +1235,11 @@ export const siteConfig = {
   },
   footerLinks: [
     {
-      title: 'Kortix',
+      title: 'MEVO',
       links: [
-        { id: 1, title: 'About', url: 'https://kortix.ai' },
-        { id: 3, title: 'Contact', url: 'mailto:hey@kortix.ai' },
-        { id: 4, title: 'Careers', url: 'https://kortix.ai/careers' },
+        { id: 1, title: 'About', url: 'https://mevoagent.com' },
+        { id: 3, title: 'Contact', url: 'mailto:support@mevoagent.com' },
+        { id: 4, title: 'Careers', url: 'https://mevoagent.com/careers' },
       ],
     },
     {
@@ -1248,10 +1248,10 @@ export const siteConfig = {
         {
           id: 5,
           title: 'Documentation',
-          url: 'https://github.com/Kortix-ai/Suna',
+          url: 'https://github.com/',
         },
-        { id: 7, title: 'Discord', url: 'https://discord.gg/Py6pCBUUPw' },
-        { id: 8, title: 'GitHub', url: 'https://github.com/Kortix-ai/Suna' },
+        { id: 7, title: 'Discord', url: '' },
+        { id: 8, title: 'GitHub', url: '' },
       ],
     },
     {
@@ -1260,27 +1260,27 @@ export const siteConfig = {
         {
           id: 9,
           title: 'Privacy Policy',
-          url: 'https://suna.so/legal?tab=privacy',
+          url: 'https://mevoagent.com/legal?tab=privacy',
         },
         {
           id: 10,
           title: 'Terms of Service',
-          url: 'https://suna.so/legal?tab=terms',
+              url: 'https://mevoagent.com/legal?tab=terms',
         },
         {
           id: 11,
           title: 'License Apache 2.0',
-          url: 'https://github.com/Kortix-ai/Suna/blob/main/LICENSE',
+          url: 'https://github.com/mevoagent/mevoagent/blob/main/LICENSE',
         },
       ],
     },
   ],
   useCases: [
     {
-      id: 'competitor-analysis',
-      title: 'Competitor Analysis',
+      id: 'patient-scheduling',
+      title: 'Patient Scheduling and Reminders',
       description:
-        'Analyze the market for my next company in the healthcare industry, located in the UK. Give me the major players, their market size, strengths, and weaknesses, and add their website URLs. Once done, generate a PDF report.',
+        'Automate appointment scheduling, send intelligent reminders, and handle cancellations or rescheduling requests through natural language processing.',
       category: 'research',
       featured: true,
       icon: (
@@ -1315,15 +1315,15 @@ export const siteConfig = {
         </svg>
       ),
       image:
-        'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=80',
-      url: 'https://suna.so/share/2fbf0552-87d6-4d12-be25-d54f435bc493',
+        'https://images.unsplash.com/photo-1631972756576-61af43a6fb6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80',
+      url: 'https://mevoagent.com/share/2fbf0552-87d6-4d12-be25-d54f435bc493',
     },
     {
-      id: 'vc-list',
-      title: 'VC List',
+      id: 'insurance-verification',
+      title: 'Insurance Prior Authorization',
       description:
-        'Give me the list of the most important VC Funds in the United States based on Assets Under Management. Give me website URLs, and if possible an email to reach them out.',
-      category: 'finance',
+        'Streamline insurance verification processes and automate prior authorization requests using intelligent document processing and real-time payer integration.',
+      category: 'healthcare',
       featured: true,
       icon: (
         <svg
@@ -1350,15 +1350,15 @@ export const siteConfig = {
         </svg>
       ),
       image:
-        'https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=80',
-      url: 'https://suna.so/share/a172382b-aa77-42a2-a3e1-46f32a0f9c37',
+        'https://plus.unsplash.com/premium_photo-1661745626124-2e520b82a19a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80',
+      url: 'https://mevoagent.com/share/a172382b-aa77-42a2-a3e1-46f32a0f9c37',
     },
     {
-      id: 'candidate-search',
-      title: 'Looking for Candidates',
+      id: 'medical-coding',
+      title: 'Medical Coding and Billing Audit',
       description:
-        "Go on LinkedIn, and find 10 profiles available - they are not working right now - for a junior software engineer position, who are located in Munich, Germany. They should have at least one bachelor's degree in Computer Science or anything related to it, and 1-year of experience in any field/role.",
-      category: 'recruitment',
+        'Automatically assign ICD-10 and CPT codes from clinical documentation while conducting real-time billing audits to ensure accuracy and compliance.',
+      category: 'healthcare',
       featured: true,
       icon: (
         <svg
@@ -1392,15 +1392,15 @@ export const siteConfig = {
         </svg>
       ),
       image:
-        'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=80',
-      url: 'https://suna.so/share/d9e39c94-4f6f-4b5a-b1a0-b681bfe0dee8',
+        'https://plus.unsplash.com/premium_photo-1661410991860-4cd86e2613e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80',
+      url: 'https://mevoagent.com/share/d9e39c94-4f6f-4b5a-b1a0-b681bfe0dee8',
     },
     {
-      id: 'company-trip',
-      title: 'Planning Company Trip',
+      id: 'patient-ehr-analysis',
+      title: 'Patients Recovery EHR Analysis',
       description:
-        "Generate a route plan for my company. We should go to California. We'll be 8 people. Compose the trip from the departure (Paris, France) to the activities we can do considering that the trip will be 7 days long - departure on the 21st of Jun 2025.",
-      category: 'travel',
+        "Identify patterns, track treatment efficacy, and generate comprehensive clinical insights for improved care coordination and decision support.",
+      category: 'healthcare',
       featured: true,
       icon: (
         <svg
@@ -1441,15 +1441,15 @@ export const siteConfig = {
         </svg>
       ),
       image:
-        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=80',
-      url: 'https://suna.so/share/23f7d904-eb66-4a9c-9247-b9704ddfd233',
+        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80',
+      url: 'https://mevoagent.com/share/23f7d904-eb66-4a9c-9247-b9704ddfd233',
     },
     {
-      id: 'excel-spreadsheet',
-      title: 'Working on Excel',
+      id: 'post-op-analysis',
+      title: 'Post-Op Recovery Analysis',
       description:
-        'My company asked to set up an Excel spreadsheet with all the information about Italian lottery games (Lotto, 10eLotto, and Million Day). Based on that, generate and send me a spreadsheet with all the basic information (public ones).',
-      category: 'data',
+        'Compare post-op recovery metrics against 100 similar cases → Flag any protocol deviations',
+      category: 'healthcare',
       featured: true,
       icon: (
         <svg
@@ -1483,15 +1483,15 @@ export const siteConfig = {
         </svg>
       ),
       image:
-        'https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=80',
-      url: 'https://suna.so/share/2a147a3a-3778-4624-8285-42474c8c1c9c',
+        'https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80',
+      url: 'https://mevoagent.com/share/2a147a3a-3778-4624-8285-42474c8c1c9c',
     },
     {
-      id: 'speaker-prospecting',
-      title: 'Automate Event Speaker Prospecting',
+      id: 'sepsis-guidelines',
+      title: 'Create Pre-op Guidelines Handout',
       description:
-        "Find 20 AI ethics speakers from Europe who've spoken at conferences in the past year. Scrapes conference sites, cross-references LinkedIn and YouTube, and outputs contact info + talk summaries.",
-      category: 'research',
+        "Compile latest pre-op guidelines from the past 6 months → Create clinical handout highlighting pre-op workflow impacts and protocol changes.",
+      category: 'healthcare',
       featured: true,
       icon: (
         <svg
@@ -1525,15 +1525,15 @@ export const siteConfig = {
         </svg>
       ),
       image:
-        'https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=80',
-      url: 'https://suna.so/share/6830cc6d-3fbd-492a-93f8-510a5f48ce50',
+        'https://plus.unsplash.com/premium_photo-1673953510197-0950d951c6d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80',
+      url: 'https://mevoagent.com/share/6830cc6d-3fbd-492a-93f8-510a5f48ce50',
     },
     {
-      id: 'scientific-papers',
-      title: 'Summarize and Cross-Reference Scientific Papers',
+      id: 'alzheimers-biomarkers',
+      title: 'Under-Researched Biomarkers',
       description:
-        'Research and compare scientific papers talking about Alcohol effects on our bodies during the last 5 years. Generate a report about the most important scientific papers talking about the topic I wrote before.',
-      category: 'research',
+        'Identify top 5 under-researched Alzheimer\'s biomarkers since 2020 → PubMed analysis. Generate a comprehensive report highlighting research gaps and potential clinical applications.',
+      category: 'healthcare',
       featured: true,
       icon: (
         <svg
@@ -1567,15 +1567,15 @@ export const siteConfig = {
         </svg>
       ),
       image:
-        'https://images.unsplash.com/photo-1532153975070-2e9ab71f1b14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=80',
-      url: 'https://suna.so/share/a106ef9f-ed97-46ee-8e51-7bfaf2ac3c29',
+        'https://images.unsplash.com/photo-1579154204601-01588f351e67?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80',
+      url: 'https://mevoagent.com/share/a106ef9f-ed97-46ee-8e51-7bfaf2ac3c29',
     },
     {
-      id: 'lead-generation',
-      title: 'Research + First Contact Draft',
+      id: 'nih-grant-justification',
+      title: 'NIH Grant Justification Section',
       description:
-        'Research my potential customers (B2B) on LinkedIn. They should be in the clean tech industry. Find their websites and their email addresses. After that, based on the company profile, generate a personalized first contact email.',
-      category: 'sales',
+        'Generate a comprehensive justification section analyzing success rates of similar Parkinson\'s research proposals for NIH grant applications. Include historical funding trends, priority areas, and strategic positioning recommendations.',
+      category: 'healthcare',
       featured: true,
       icon: (
         <svg
@@ -1609,15 +1609,15 @@ export const siteConfig = {
         </svg>
       ),
       image:
-        'https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=80',
-      url: 'https://suna.so/share/c3472df7-adc1-4d5f-9927-4f8f513ec2fe',
+        'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80',
+      url: 'https://mevoagent.com/share/c3472df7-adc1-4d5f-9927-4f8f513ec2fe',
     },
     {
-      id: 'seo-analysis',
-      title: 'SEO Analysis',
+      id: 'er-admissions-forecast',
+      title: 'Predict Q3 ER Admissions',
       description:
-        "Based on my website suna.so, generate an SEO report analysis, find top-ranking pages by keyword clusters, and identify topics I'm missing.",
-      category: 'marketing',
+        "Analyze historical admission data and local flu trends to generate staffing recommendations for the upcoming quarter's emergency room patient volume.",
+      category: 'healthcare',
       featured: true,
       icon: (
         <svg
@@ -1658,15 +1658,15 @@ export const siteConfig = {
         </svg>
       ),
       image:
-        'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=80',
-      url: 'https://suna.so/share/cf756e02-fee9-4281-a0e4-76ac850f1ac9',
+        'https://images.unsplash.com/photo-1538108149393-fbbd81895907?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80',
+      url: 'https://mevoagent.com/share/cf756e02-fee9-4281-a0e4-76ac850f1ac9',
     },
     {
-      id: 'personal-trip',
-      title: 'Generate a Personal Trip',
+      id: 'medicare-aco-compliance',
+      title: 'Medicare ACO Renewal Compliance',
       description:
-        'Generate a personal trip to London, with departure from Bangkok on the 1st of May. The trip will last 10 days. Find an accommodation in the center of London, with a rating on Google reviews of at least 4.5.',
-      category: 'travel',
+        'Generate a comprehensive compliance readiness report for Medicare ACO renewal, analyzing current documentation gaps and producing an actionable priority list with implementation timelines.',
+      category: 'healthcare',
       featured: true,
       icon: (
         <svg
@@ -1707,15 +1707,15 @@ export const siteConfig = {
         </svg>
       ),
       image:
-        'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=80',
-      url: 'https://suna.so/share/8442cc76-ac8b-438c-b539-4b93909a2218',
+        'https://plus.unsplash.com/premium_photo-1661687447812-69b96ec8f0e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80',
+      url: 'https://mevoagent.com/share/8442cc76-ac8b-438c-b539-4b93909a2218',
     },
     {
-      id: 'funded-startups',
-      title: 'Recently Funded Startups',
+      id: 'surgical-benchmarks',
+      title: 'Surgical Outcomes Benchmarks',
       description:
-        'Go on Crunchbase, Dealroom, and TechCrunch, filter by Series A funding rounds in the SaaS Finance Space, and build a report with company data, founders, and contact info for outbound sales.',
-      category: 'finance',
+        'Compare surgical outcomes against top 10 US hospitals, analyze performance gaps, and create a comprehensive quality improvement roadmap with actionable steps to enhance surgical standards and patient outcomes.',
+      category: 'healthcare',
       featured: true,
       icon: (
         <svg
@@ -1742,15 +1742,15 @@ export const siteConfig = {
         </svg>
       ),
       image:
-        'https://images.unsplash.com/photo-1444653614773-995cb1ef9efa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=80',
-      url: 'https://suna.so/share/f04c871c-6bf5-4464-8e9c-5351c9cf5a60',
+        'https://images.unsplash.com/photo-1640876777012-bdb00a6323e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80',
+      url: 'https://mevoagent.com/share/f04c871c-6bf5-4464-8e9c-5351c9cf5a60',
     },
     {
-      id: 'scrape-forums',
-      title: 'Scrape Forum Discussions',
+      id: 'covid-dashboard',
+      title: 'Dashboard: Current Capacity vs Surge',
       description:
-        'I need to find the best beauty centers in Rome, but I want to find them by using open forums that speak about this topic. Go on Google, and scrape the forums by looking for beauty center discussions located in Rome.',
-      category: 'research',
+        'Interactive dashboard that compares current hospital capacity with CDC COVID surge prediction models, enabling healthcare administrators to visualize resource allocation needs and prepare for potential patient influxes.',
+      category: 'healthcare',
       featured: true,
       icon: (
         <svg
@@ -1784,8 +1784,8 @@ export const siteConfig = {
         </svg>
       ),
       image:
-        'https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=80',
-      url: 'https://suna.so/share/53bcd4c7-40d6-4293-9f69-e2638ddcfad8',
+        'https://images.unsplash.com/photo-1707124760574-077d74fc3784?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80',
+      url: 'https://mevoagent.com/share/53bcd4c7-40d6-4293-9f69-e2638ddcfad8',
     },
   ],
 };
