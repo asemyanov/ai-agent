@@ -977,7 +977,7 @@ export const ComposioConnector: React.FC<ComposioConnectorProps> = ({
                           If the window didn't open,{' '}
                           <button
                             onClick={() => window.open(redirectUrl, '_blank')}
-                            className="underline font-medium hover:no-underline"
+                            className="underline font-medium hover:no-underline text-secondary"
                           >
                             click here to authenticate
                           </button>

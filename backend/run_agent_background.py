@@ -238,7 +238,7 @@ async def run_agent_background(
 
         # Update DB status
         await update_agent_run_status(client, agent_run_id, final_status, error=error_message)
-
+    
         # Publish final control signal (END_STREAM or ERROR)
         control_signal = "END_STREAM" if final_status == "completed" else "ERROR" if final_status == "failed" else "STOP"
         try:

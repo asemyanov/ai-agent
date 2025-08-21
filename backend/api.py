@@ -130,18 +130,25 @@ async def log_requests_middleware(request: Request, call_next):
         raise
 
 # Define allowed origins based on environment
-allowed_origins = ["https://www.suna.so", "https://suna.so"]
+allowed_origins = ["https://www.mevoagent.com", "https://mevoagent.com"]
 allow_origin_regex = None
 
-# Add staging-specific origins
+# Add local environment origins
 if config.ENV_MODE == EnvMode.LOCAL:
     allowed_origins.append("http://localhost:3000")
 
 # Add staging-specific origins
 if config.ENV_MODE == EnvMode.STAGING:
-    allowed_origins.append("https://staging.suna.so")
+
     allowed_origins.append("http://localhost:3000")
-    allow_origin_regex = r"https://suna-.*-prjcts\.vercel\.app"
+    allow_origin_regex = r"https://mevo-.*\.vercel\.app"
+
+# Add production-specific origins
+if config.ENV_MODE == EnvMode.PRODUCTION:
+    # Allow all Vercel preview deployments and production domain
+    allow_origin_regex = r"https://mevo-.*\.vercel\.app"
+    allowed_origins.append("https://www.mevoagent.com")
+    allowed_origins.append("https://mevoagent.com")
 
 app.add_middleware(
     CORSMiddleware,

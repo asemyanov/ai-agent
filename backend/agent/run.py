@@ -48,7 +48,7 @@ class AgentConfig:
     stream: bool
     native_max_auto_continues: int = 25
     max_iterations: int = 100
-    model_name: str = "openai/gpt-5-mini"
+    model_name: str = "openrouter/google/gemini-2.5-flash"
     enable_thinking: Optional[bool] = False
     reasoning_effort: Optional[str] = 'low'
     enable_context_manager: bool = True
@@ -525,9 +525,9 @@ class AgentRunner:
         logger.debug(f"get_max_tokens called with: '{self.config.model_name}' (type: {type(self.config.model_name)})")
         if "sonnet" in self.config.model_name.lower():
             return 8192
-        elif "gpt-4" in self.config.model_name.lower():
-            return 4096
-        elif "gemini-2.5-pro" in self.config.model_name.lower():
+        elif "gpt" in self.config.model_name.lower():
+            return 8192
+        elif "gemini-2.5" in self.config.model_name.lower():
             return 64000
         elif "kimi-k2" in self.config.model_name.lower():
             return 8192
@@ -720,7 +720,7 @@ async def run_agent(
     thread_manager: Optional[ThreadManager] = None,
     native_max_auto_continues: int = 25,
     max_iterations: int = 100,
-    model_name: str = "openai/gpt-5-mini",
+    model_name: str = "openrouter/google/gemini-2.5-flash",
     enable_thinking: Optional[bool] = False,
     reasoning_effort: Optional[str] = 'low',
     enable_context_manager: bool = True,
