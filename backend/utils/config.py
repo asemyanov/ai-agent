@@ -239,8 +239,8 @@ class Configuration:
     MORPH_API_KEY: Optional[str] = None
     GEMINI_API_KEY: Optional[str] = None
     OPENROUTER_API_BASE: Optional[str] = "https://openrouter.ai/api/v1"
-    OR_SITE_URL: Optional[str] = "https://kortix.ai"
-    OR_APP_NAME: Optional[str] = "Kortix AI"    
+    OR_SITE_URL: Optional[str] = "https://mevoagent.com"
+    OR_APP_NAME: Optional[str] = "MEVO"    
     
     # AWS Bedrock credentials
     AWS_ACCESS_KEY_ID: Optional[str] = None
@@ -279,8 +279,9 @@ class Configuration:
     STRIPE_DEFAULT_TRIAL_DAYS: int = 14
     
     # Stripe Product IDs
-    STRIPE_PRODUCT_ID_PROD: str = 'prod_SCl7AQ2C8kK1CD'
-    STRIPE_PRODUCT_ID_STAGING: str = 'prod_SCgIj3G7yPOAWY'
+    STRIPE_PRODUCT_ID_PROD: str = 'prod_SoNgsuj2fmyC3E'
+    STRIPE_PRODUCT_ID_STAGING: str = 'prod_SoNPEPmnxdYD3J'
+
     
     # Sandbox configuration
     SANDBOX_IMAGE_NAME = "kortix/suna:0.1.3.6"
@@ -305,8 +306,8 @@ class Configuration:
     # Agent limits per billing tier
     # Note: These limits are bypassed in local mode (ENV_MODE=local) where unlimited agents are allowed
     AGENT_LIMITS = {
-        'free': 2,
-        'tier_2_20': 5,
+        'free': 20,
+        'tier_2_20': 20,
         'tier_6_50': 20,
         'tier_12_100': 20,
         'tier_25_200': 100,
@@ -314,7 +315,7 @@ class Configuration:
         'tier_125_800': 100,
         'tier_200_1000': 100,
         # Yearly plans have same limits as monthly
-        'tier_2_20_yearly': 5,
+        'tier_2_20_yearly': 20,
         'tier_6_50_yearly': 20,
         'tier_12_100_yearly': 20,
         'tier_25_200_yearly': 100,
@@ -322,7 +323,7 @@ class Configuration:
         'tier_125_800_yearly': 100,
         'tier_200_1000_yearly': 100,
         # Yearly commitment plans
-        'tier_2_17_yearly_commitment': 5,
+        'tier_2_17_yearly_commitment': 20,
         'tier_6_42_yearly_commitment': 20,
         'tier_25_170_yearly_commitment': 100,
     }

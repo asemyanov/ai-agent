@@ -20,7 +20,7 @@ MODELS = {
         "tier_availability": ["free", "paid"]
     },
     "openrouter/google/gemini-2.5-flash": {
-        "aliases": ["Clerk 💨⚡️🚀"],
+        "aliases": ["Clerk 💨⚡️🚀", "openrouter/google/gemini-2.5-flash"],
         "pricing": {
             "input_cost_per_million_tokens": 0.30,
             "output_cost_per_million_tokens": 2.50
@@ -56,15 +56,6 @@ MODELS = {
         "context_window": 400_000,  # 400k tokens
         "tier_availability": ["paid"]
     },
-    # "openrouter/o4-mini-high": {
-    #     "aliases": ["o4-mini-high"],
-    #     "pricing": {
-    #         "input_cost_per_million_tokens": 1.1,
-    #         "output_cost_per_million_tokens": 4
-    #     },
-    #     "context_window": 100_000,  # 100k tokens
-    #     "tier_availability": ["paid"]
-    # }
 }
 
 # Derived structures (auto-generated from MODELS)
