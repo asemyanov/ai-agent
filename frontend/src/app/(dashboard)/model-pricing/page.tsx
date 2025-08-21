@@ -147,7 +147,7 @@ export default function PricingPage() {
   const { allModels } = useModelSelection();
 
   const [selectedModelId, setSelectedModelId] = useState<string>(
-    'anthropic/claude-sonnet-4-20250514',
+    'bedrock/us.anthropic.claude-sonnet-4-20250514-v1:0',
   );
   const [showAllTasks, setShowAllTasks] = useState<boolean>(false);
 
@@ -288,8 +288,8 @@ export default function PricingPage() {
         <CardContent>
           <p className="text-muted-foreground">
             Usage costs are calculated based on token consumption from AI model
-            interactions. We apply a 50% markup over direct model provider costs
-            to maintain our platform and services. Your total cost depends on
+            interactions. We apply a small markup over direct model provider costs
+            to maintain our AWS servers and APIs. Your total cost depends on
             the specific model used and the number of tokens processed for both
             input (prompts, context) and output (generated responses).
           </p>
@@ -418,9 +418,7 @@ export default function PricingPage() {
         <CardHeader>
           <CardTitle>Compute Pricing by Model</CardTitle>
           <CardDescription>
-            Detailed pricing information for available AI models. We apply a 50%
-            markup on direct LLM provider costs to maintain our service and
-            generate profit.
+            Detailed pricing information for available AI models.
           </CardDescription>
         </CardHeader>
         <CardContent>

@@ -76,7 +76,8 @@ export function ConfigurationTab({
     if (['system', 'tools', 'integrations', 'knowledge', 'playbooks', 'triggers'].includes(val || '')) {
       return val!;
     }
-    return isSunaAgent ? 'integrations' : 'system';
+    // return isSunaAgent ? 'integrations' : 'system';
+    return '';
   };
 
   const [openAccordion, setOpenAccordion] = React.useState<string>(mapAccordion(initialAccordion));
@@ -93,7 +94,7 @@ export function ConfigurationTab({
   const handleSystemPromptChange = (value: string) => {
     if (!isSystemPromptEditable && isSunaAgent) {
       toast.error("System prompt cannot be edited", {
-        description: "Suna's system prompt is managed centrally and cannot be changed.",
+        description: "MEVO's system prompt is managed centrally and cannot be changed.",
       });
       return;
     }
@@ -107,7 +108,7 @@ export function ConfigurationTab({
   const handleToolsChange = (tools: Record<string, boolean | { enabled: boolean; description: string }>) => {
     if (!areToolsEditable && isSunaAgent) {
       toast.error("Tools cannot be modified", {
-        description: "Suna's default tools are managed centrally and cannot be changed.",
+        description: "MEVO's default tools are managed centrally and cannot be changed.",
       });
       return;
     }
@@ -129,10 +130,10 @@ export function ConfigurationTab({
                 <div className="text-primary-600">
                   <KortixLogo size={20} />
                 </div>
-                <span className="font-semibold text-primary-800">Suna Default Agent</span>
+                <span className="font-semibold text-primary-800">MEVO Default Agent</span>
               </div>
               <p className="text-sm text-primary-700">
-                This is Suna's default agent with centrally managed system prompt and tools.
+                This is MEVO's default agent with centrally managed system prompt and tools.
                 You can customize integrations, knowledge base, playbooks, and triggers to personalize your experience.
               </p>
             </div>
@@ -362,7 +363,7 @@ export function ConfigurationTab({
                     </div>
                   </div>
                   <div className="text-left flex-1 min-w-0">
-                    <h4 className="text-sm font-semibold text-foreground mb-1 group-hover:text-primary transition-colors duration-300">Playbooks</h4>
+                    <h4 className="text-sm font-semibold text-foreground mb-1 group-hover:text-primary transition-colors duration-300">Workflows</h4>
                     <p className="text-xs text-muted-foreground group-hover:text-foreground/70 transition-colors duration-300">Simple variable-driven runs</p>
                   </div>
                   <ChevronDown className={`h-4 w-4 flex-shrink-0 transition-transform duration-300 ease-out ${openAccordion === 'playbooks' ? 'rotate-180' : ''}`} />
@@ -398,7 +399,7 @@ export function ConfigurationTab({
                     </div>
                   </div>
                   <div className="text-left flex-1 min-w-0">
-                    <h4 className="text-sm font-semibold text-foreground mb-1 group-hover:text-primary transition-colors duration-300">Triggers</h4>
+                    <h4 className="text-sm font-semibold text-foreground mb-1 group-hover:text-primary transition-colors duration-300">Schedule</h4>
                     <p className="text-xs text-muted-foreground group-hover:text-foreground/70 transition-colors duration-300">Set up automated agent runs</p>
                   </div>
                   <ChevronDown className={`h-4 w-4 flex-shrink-0 transition-transform duration-300 ease-out ${openAccordion === 'triggers' ? 'rotate-180' : ''}`} />

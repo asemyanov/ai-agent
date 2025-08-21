@@ -220,7 +220,7 @@ export const StreamlinedInstallDialog: React.FC<StreamlinedInstallDialogProps> =
   const isOnFinalStep = currentStep >= setupSteps.length;
   
   const { avatar, color } = useMemo(() => {
-    return { avatar: '🤖', color: '#6366f1' };
+    return { avatar: null, color: '#6366f1' }; // Will use Bot icon as fallback
   }, []);
 
   if (!item) return null;

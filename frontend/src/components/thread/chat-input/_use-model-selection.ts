@@ -7,24 +7,10 @@ import { useAvailableModels } from '@/hooks/react-query/subscriptions/use-model'
 
 export const STORAGE_KEY_MODEL = 'suna-preferred-model-v3';
 export const STORAGE_KEY_CUSTOM_MODELS = 'customModels';
-export const DEFAULT_PREMIUM_MODEL_ID = 'claude-sonnet-4';
-export const DEFAULT_FREE_MODEL_ID = 'gpt-5-mini';
-
-// Helper to test localStorage functionality
-export const testLocalStorage = (): boolean => {
-  if (typeof window === 'undefined') return false;
-  try {
-    const testKey = 'test-storage';
-    const testValue = 'test-value';
-    localStorage.setItem(testKey, testValue);
-    const retrieved = localStorage.getItem(testKey);
-    localStorage.removeItem(testKey);
-    return retrieved === testValue;
-  } catch (error) {
-    console.error('localStorage test failed:', error);
-    return false;
-  }
-};
+export const DEFAULT_PREMIUM_MODEL_ID = 'openrouter/google/gemini-2.5-pro';
+// Kimi2 has been commented out, Gemini 2.5 Pro is now the default free model.
+export const DEFAULT_FREE_MODEL_ID = 'openrouter/google/gemini-2.5-flash';
+// export const DEFAULT_FREE_MODEL_ID = 'openrouter/moonshotai/kimi-k2';
 
 export type SubscriptionStatus = 'no_subscription' | 'active';
 
@@ -45,57 +31,59 @@ export interface CustomModel {
 
 // SINGLE SOURCE OF TRUTH for all model data - aligned with backend constants
 export const MODELS = {
-  // Premium tier models (require subscription) - using aliases from backend
-  'claude-sonnet-4': { 
-    tier: 'premium',
-    priority: 100, 
+  // Free tier models (available to all users)
+  'bedrock/us.anthropic.claude-sonnet-4-20250514-v1:0': {
+    tier: 'free',
+    priority: 98,
     recommended: true,
     lowQuality: false
   },
-  'gpt-5': { 
+
+  'openrouter/google/gemini-2.5-pro': { 
     tier: 'premium', 
-    priority: 99,
-    recommended: false,
-    lowQuality: false
-  },
-  'google/gemini-2.5-pro': { 
-    tier: 'premium', 
-    priority: 96,
-    recommended: false,
-    lowQuality: false
-  },
-  'grok-4': { 
-    tier: 'premium', 
-    priority: 94,
-    recommended: false,
-    lowQuality: false
-  },
-  'sonnet-3.7': { 
-    tier: 'premium', 
-    priority: 93, 
-    recommended: false,
-    lowQuality: false
-  },
-  'sonnet-3.5': { 
-    tier: 'premium', 
-    priority: 90,
-    recommended: false,
+    priority: 95,
+    recommended: true,
     lowQuality: false
   },
 
-  // Free tier models (available to all users)
-  'gpt-5-mini': { 
+  'openrouter/google/gemini-2.5-flash': { 
     tier: 'free', 
     priority: 100,
     recommended: true,
     lowQuality: false
   },
-  'moonshotai/kimi-k2': { 
-    tier: 'premium', // Updated to match backend - this is actually paid tier
-    priority: 85,
-    recommended: false,
+  'openrouter/x-ai/grok-4': { 
+    tier: 'premium', 
+    priority: 94,
+    recommended: true,
     lowQuality: false
   },
+
+
+  'openrouter/openai/gpt-5': { 
+    tier: 'premium', 
+    priority: 99,
+    recommended: true,
+    lowQuality: false
+  },
+  'openrouter/openai/gpt-5-mini': { 
+    tier: 'free', 
+    priority: 98,
+    recommended: true,
+    lowQuality: false
+  },
+  // 'gemini-2.5-flash:thinking': { 
+  //   tier: 'premium', 
+  //   priority: 84,
+  //   recommended: false,
+  //   lowQuality: false
+  // },
+  // 'deepseek/deepseek-chat-v3-0324': { 
+  //   tier: 'free', 
+  //   priority: 75,
+  //   recommended: false,
+  //   lowQuality: false
+  // },
 };
 
 // Helper to check if a user can access a model based on subscription status
@@ -188,22 +176,22 @@ export const useModelSelection = () => {
   const MODEL_OPTIONS = useMemo(() => {
     let models = [];
     
-            // Default models if API data not available
-        if (!modelsData?.models || isLoadingModels) {
-          models = [
-            { 
-              id: DEFAULT_FREE_MODEL_ID, 
-              label: 'GPT-5 Mini', 
-              requiresSubscription: false,
-              priority: MODELS[DEFAULT_FREE_MODEL_ID]?.priority || 100
-            },
-            { 
-              id: DEFAULT_PREMIUM_MODEL_ID, 
-              label: 'Claude Sonnet 4', 
-              requiresSubscription: true, 
-              priority: MODELS[DEFAULT_PREMIUM_MODEL_ID]?.priority || 100
-            },
-          ];
+    // Default models if API data not available
+    if (!modelsData?.models || isLoadingModels) {
+      models = [
+        { 
+          id: DEFAULT_FREE_MODEL_ID, 
+          label: 'Balanced 🧠⚖️💰', 
+          requiresSubscription: false,
+          priority: MODELS[DEFAULT_FREE_MODEL_ID]?.priority || 50
+        },
+        { 
+          id: DEFAULT_PREMIUM_MODEL_ID, 
+          label: 'Balanced 🧠⚖️💰', 
+          requiresSubscription: true, 
+          priority: MODELS[DEFAULT_PREMIUM_MODEL_ID]?.priority || 100
+        },
+      ];
     } else {
       // Process API-provided models
       models = modelsData.models.map(model => {
@@ -256,20 +244,14 @@ export const useModelSelection = () => {
     
     // Sort models consistently in one place:
     // 1. First by recommended (recommended first)
-    // 2. Then by priority (higher first)
-    // 3. Finally by name (alphabetical)
+    // 2. Then by name (alphabetical)
     const sortedModels = models.sort((a, b) => {
       // First by recommended status
       if (a.recommended !== b.recommended) {
         return a.recommended ? -1 : 1;
       }
 
-      // Then by priority (higher first)
-      if (a.priority !== b.priority) {
-        return b.priority - a.priority;
-      }
-      
-      // Finally by name
+      // Then by name
       return a.label.localeCompare(b.label);
     });
     return sortedModels;
