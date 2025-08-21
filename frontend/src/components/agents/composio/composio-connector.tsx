@@ -955,9 +955,13 @@ export const ComposioConnector: React.FC<ComposioConnectorProps> = ({
                     className="space-y-6"
                   >
                     <div className="text-center space-y-6 py-8">
-                      <div className="w-20 h-20 mx-auto border rounded-2xl bg-primary/10 flex items-center justify-center">
+                      <button 
+                        onClick={() => redirectUrl && window.open(redirectUrl, '_blank')}
+                        className="w-20 h-20 mx-auto border rounded-2xl bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors cursor-pointer"
+                        disabled={!redirectUrl}
+                      >
                         <ExternalLink className="h-10 w-10 text-primary animate-pulse" />
-                      </div>
+                      </button>
                       <div className="space-y-1">
                         <h3 className="font-semibold text-lg">Complete Authentication</h3>
                         <p className="text-sm text-muted-foreground max-w-sm mx-auto">
