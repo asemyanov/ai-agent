@@ -16,7 +16,7 @@ SUNA_CONFIG = {
         "sb_deploy_tool": True,
         "sb_expose_tool": True,
         "web_search_tool": True,
-        "sb_vision_tool": True,
+        "sb_vision_tool": False,
         "sb_image_edit_tool": False,
         "sb_presentation_outline_tool": False,
         "sb_presentation_tool": False,
