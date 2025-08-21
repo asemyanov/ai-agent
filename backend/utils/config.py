@@ -87,6 +87,25 @@ class Configuration:
     STRIPE_TIER_6_42_YEARLY_COMMITMENT_ID_STAGING: str = 'price_1RskkSPA6ngq7HqUcWqm5p9W'  # $42.50/month
     STRIPE_TIER_25_170_YEARLY_COMMITMENT_ID_STAGING: str = 'price_1RskkUPA6ngq7HqU6ZB4FJoW'  # $170/month
     
+# Credit package price IDs - Production
+    STRIPE_CREDITS_10_PRICE_ID_PROD: str = 'price_1RskkUPA6ngq7HqU6ZB4FJoW'
+    STRIPE_CREDITS_25_PRICE_ID_PROD: str = 'price_1RskkUPA6ngq7HqU6ZB4FJoW'
+    STRIPE_CREDITS_50_PRICE_ID_PROD: str = 'price_1RskkUPA6ngq7HqU6ZB4FJoW'
+    STRIPE_CREDITS_100_PRICE_ID_PROD: str = 'price_1RskkUPA6ngq7HqU6ZB4FJoW'
+    STRIPE_CREDITS_250_PRICE_ID_PROD: str = 'price_1RskkUPA6ngq7HqU6ZB4FJoW'
+    STRIPE_CREDITS_500_PRICE_ID_PROD: str = 'price_1RskkUPA6ngq7HqU6ZB4FJoW'
+    
+    # Credit package price IDs - Staging  
+    STRIPE_CREDITS_10_PRICE_ID_STAGING: str = 'price_1RskkUPA6ngq7HqU6ZB4FJoW'
+    STRIPE_CREDITS_25_PRICE_ID_STAGING: str = 'price_1RskkUPA6ngq7HqU6ZB4FJoW'
+    STRIPE_CREDITS_50_PRICE_ID_STAGING: str = 'price_1RskkUPA6ngq7HqU6ZB4FJoW'
+    STRIPE_CREDITS_100_PRICE_ID_STAGING: str = 'price_1RskkUPA6ngq7HqU6ZB4FJoW'
+    STRIPE_CREDITS_250_PRICE_ID_STAGING: str = 'price_1RskkUPA6ngq7HqU6ZB4FJoW'
+    STRIPE_CREDITS_500_PRICE_ID_STAGING: str = 'price_1RskkUPA6ngq7HqU6ZB4FJoW'
+    
+
+
+
     # Computed subscription tier IDs based on environment
     @property
     def STRIPE_FREE_TIER_ID(self) -> str:   
@@ -215,13 +234,13 @@ class Configuration:
     ANTHROPIC_API_KEY: Optional[str] = None
     OPENAI_API_KEY: Optional[str] = None
     GROQ_API_KEY: Optional[str] = None
-    OPENROUTER_API_KEY: str
+    OPENROUTER_API_KEY: Optional[str] = None
     XAI_API_KEY: Optional[str] = None
     MORPH_API_KEY: Optional[str] = None
     GEMINI_API_KEY: Optional[str] = None
     OPENROUTER_API_BASE: Optional[str] = "https://openrouter.ai/api/v1"
-    OR_SITE_URL: Optional[str] = "https://mevoagent.com"
-    OR_APP_NAME: Optional[str] = "MEVO Agent"    
+    OR_SITE_URL: Optional[str] = "https://kortix.ai"
+    OR_APP_NAME: Optional[str] = "Kortix AI"    
     
     # AWS Bedrock credentials
     AWS_ACCESS_KEY_ID: Optional[str] = None
@@ -260,8 +279,8 @@ class Configuration:
     STRIPE_DEFAULT_TRIAL_DAYS: int = 14
     
     # Stripe Product IDs
-    STRIPE_PRODUCT_ID_PROD: str = 'prod_SoNgsuj2fmyC3E'
-    STRIPE_PRODUCT_ID_STAGING: str = 'prod_SoNPEPmnxdYD3J'
+    STRIPE_PRODUCT_ID_PROD: str = 'prod_SCl7AQ2C8kK1CD'
+    STRIPE_PRODUCT_ID_STAGING: str = 'prod_SCgIj3G7yPOAWY'
     
     # Sandbox configuration
     SANDBOX_IMAGE_NAME = "kortix/suna:0.1.3.6"
@@ -276,13 +295,6 @@ class Configuration:
     # Admin API key for server-side operations
     KORTIX_ADMIN_API_KEY: Optional[str] = None
 
-    CLOUDFLARE_BASE_DOMAIN: Optional[str] = None
-    CLOUDFLARE_API_TOKEN: Optional[str] = None
-    CLOUDFLARE_ACCOUNT_ID: Optional[str] = None
-
-
-
-
     # API Keys system configuration
     API_KEY_SECRET: str = "default-secret-key-change-in-production"
     API_KEY_LAST_USED_THROTTLE_SECONDS: int = 900
@@ -293,8 +305,8 @@ class Configuration:
     # Agent limits per billing tier
     # Note: These limits are bypassed in local mode (ENV_MODE=local) where unlimited agents are allowed
     AGENT_LIMITS = {
-        'free': 20,
-        'tier_2_20': 20,
+        'free': 2,
+        'tier_2_20': 5,
         'tier_6_50': 20,
         'tier_12_100': 20,
         'tier_25_200': 100,
@@ -302,7 +314,7 @@ class Configuration:
         'tier_125_800': 100,
         'tier_200_1000': 100,
         # Yearly plans have same limits as monthly
-        'tier_2_20_yearly': 20,
+        'tier_2_20_yearly': 5,
         'tier_6_50_yearly': 20,
         'tier_12_100_yearly': 20,
         'tier_25_200_yearly': 100,
@@ -310,7 +322,7 @@ class Configuration:
         'tier_125_800_yearly': 100,
         'tier_200_1000_yearly': 100,
         # Yearly commitment plans
-        'tier_2_17_yearly_commitment': 20,
+        'tier_2_17_yearly_commitment': 5,
         'tier_6_42_yearly_commitment': 20,
         'tier_25_170_yearly_commitment': 100,
     }
