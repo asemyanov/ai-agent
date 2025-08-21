@@ -28,11 +28,11 @@ export const generateThreadName = async (message: string): Promise<string> => {
           {
             role: 'system',
             content:
-              "You are a helpful assistant that generates extremely concise titles (2-4 words maximum) for chat threads based on the user's message. Respond with only the title, no other text or punctuation.",
+              "You are a helpful assistant that generates extremely concise titles (2-4 words maximum) for chat threads based on the user's message. Respond with only the title that starts with emoji",
           },
           {
             role: 'user',
-            content: `Generate an extremely brief title (2-4 words only) for a chat thread that starts with this message: "${message}"`,
+            content: `Generate an extremely brief title (2-4 words only + emojis) for a chat thread that starts with this message: "${message}"`,
           },
         ],
         max_tokens: 20,

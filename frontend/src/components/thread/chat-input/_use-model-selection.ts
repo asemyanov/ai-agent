@@ -49,28 +49,32 @@ export const MODELS = {
     recommended: true,
     lowQuality: false
   },
-  'gpt-5': { 
+
+  'openrouter/google/gemini-2.5-pro': { 
     tier: 'premium', 
-    priority: 99,
-    recommended: false,
+    priority: 95,
+    recommended: true,
     lowQuality: false
   },
-  'google/gemini-2.5-pro': { 
-    tier: 'premium', 
-    priority: 96,
-    recommended: false,
+
+  'openrouter/google/gemini-2.5-flash': { 
+    tier: 'free', 
+    priority: 100,
+    recommended: true,
     lowQuality: false
   },
-  'grok-4': { 
+  'openrouter/x-ai/grok-4': { 
     tier: 'premium', 
     priority: 94,
-    recommended: false,
+    recommended: true,
     lowQuality: false
   },
-  'sonnet-3.7': { 
+
+
+  'openrouter/openai/gpt-5': { 
     tier: 'premium', 
-    priority: 93, 
-    recommended: false,
+    priority: 99,
+    recommended: true,
     lowQuality: false
   },
   'sonnet-3.5': { 
@@ -82,7 +86,7 @@ export const MODELS = {
 
   'moonshotai/kimi-k2': { 
     tier: 'free', 
-    priority: 100,
+    priority: 98,
     recommended: true,
     lowQuality: false
   },
@@ -251,20 +255,14 @@ export const useModelSelectionOld = () => {
     
     // Sort models consistently in one place:
     // 1. First by recommended (recommended first)
-    // 2. Then by priority (higher first)
-    // 3. Finally by name (alphabetical)
+    // 2. Then by name (alphabetical)
     const sortedModels = models.sort((a, b) => {
       // First by recommended status
       if (a.recommended !== b.recommended) {
         return a.recommended ? -1 : 1;
       }
 
-      // Then by priority (higher first)
-      if (a.priority !== b.priority) {
-        return b.priority - a.priority;
-      }
-      
-      // Finally by name
+      // Then by name
       return a.label.localeCompare(b.label);
     });
     return sortedModels;

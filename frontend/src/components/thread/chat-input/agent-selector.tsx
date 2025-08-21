@@ -20,7 +20,6 @@ import { NewAgentDialog } from '@/components/agents/new-agent-dialog';
 
 import { useRouter } from 'next/navigation';
 import { cn, truncateString } from '@/lib/utils';
-import { KortixLogo } from '@/components/sidebar/kortix-logo';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 interface AgentSelectorProps {
@@ -58,8 +57,7 @@ export const AgentSelector: React.FC<AgentSelectorProps> = ({
     ...agents.map((agent: any) => ({
       ...agent,
       id: agent.agent_id,
-      type: 'custom' as const,
-      icon: <Bot className="h-4 w-4" />
+      type: 'custom' as const
     }))
   ];
 
@@ -93,10 +91,9 @@ export const AgentSelector: React.FC<AgentSelectorProps> = ({
   const getAgentDisplay = () => {
     const selectedAgent = allAgents.find(agent => agent.id === selectedAgentId);
     if (selectedAgent) {
-      const isSelectedAgentSuna = selectedAgent.metadata?.is_suna_default || false;
       return {
         name: selectedAgent.name,
-        icon: isSelectedAgentSuna ? <KortixLogo size={16} /> : selectedAgent.icon
+        icon: null
       };
     }
     
@@ -104,10 +101,9 @@ export const AgentSelector: React.FC<AgentSelectorProps> = ({
     }
     
     const defaultAgent = allAgents[0];
-    const isDefaultAgentSuna = defaultAgent?.metadata?.is_suna_default || false;
     return {
-      name: defaultAgent?.name || 'Suna',
-      icon: isDefaultAgentSuna ? <KortixLogo size={16} /> : (defaultAgent?.icon || <KortixLogo size={16} />)
+      name: defaultAgent?.name || 'MEVO Default Agent',
+      icon: null
     };
   };
 
@@ -157,7 +153,6 @@ export const AgentSelector: React.FC<AgentSelectorProps> = ({
     const isSelected = agent.id === selectedAgentId;
     const isHighlighted = index === highlightedIndex;
     const hasSettings = agent.type === 'custom' && agent.id;
-    const isThisAgentSuna = agent.metadata?.is_suna_default || false;
 
     return (
       <TooltipProvider key={agent.id || 'default'}>
@@ -171,13 +166,6 @@ export const AgentSelector: React.FC<AgentSelectorProps> = ({
               onClick={() => handleAgentSelect(agent.id)}
               onMouseEnter={() => setHighlightedIndex(index)}
             >
-              <div className="flex-shrink-0">
-                {isThisAgentSuna ? (
-                  <KortixLogo size={16} />
-                ) : (
-                  agent.icon
-                )}
-              </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <span className="font-medium text-sm text-foreground/90 truncate">
@@ -242,9 +230,11 @@ export const AgentSelector: React.FC<AgentSelectorProps> = ({
                   disabled={disabled}
                 >
                   <div className="flex items-center gap-2">
-                    <div className={cn("flex-shrink-0", compact && "scale-90")}>
-                      {agentDisplay.icon}
-                    </div>
+                    {agentDisplay.icon && (
+                      <div className={cn("flex-shrink-0", compact && "scale-90")}>
+                        {agentDisplay.icon}
+                      </div>
+                    )}
                     <span className={cn(
                       compact 
                         ? "truncate max-w-[60px] text-xs"

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Bot } from 'lucide-react';
 import { useAgent } from '@/hooks/react-query/agents/use-agents';
 import { KortixLogo } from '@/components/sidebar/kortix-logo';
 import { DynamicIcon } from 'lucide-react/dynamic';
@@ -30,7 +31,7 @@ export const AgentAvatar: React.FC<AgentAvatarProps> = ({
   }
 
   if (!agent && !agentId) {
-    return <KortixLogo size={size} />;
+    return null;
   }
 
   const isSuna = agent?.metadata?.is_suna_default;

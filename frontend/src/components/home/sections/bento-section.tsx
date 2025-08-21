@@ -9,21 +9,21 @@ export function BentoSection() {
     {
       id: 1,
       content: <FirstBentoAnimation />,
-      title: 'Design with conversation',
+      title: 'Step 1: Describe your tasks',
       description:
-        'Simply describe what you need your agent to accomplish, and Suna will build it for you.',
+        'Tell what you need your AI agent to accomplish, and it will set up itself.',
     },
     {
       id: 2,
       content: <SecondBentoAnimation />,
-      title: 'Integrate everything',
+      title: 'Step 2: Add your worktools',
       description:
         'Connect to your favorite tools and services with our extensive library of integrations.',
     },
     {
       id: 3,
       content: <ThirdBentoAnimation />,
-      title: 'Automate intelligently',
+      title: 'Step 3: Your tasks are done',
       description:
         'Watch your agent handle complex tasks and workflows with advanced AI reasoning.',
     },

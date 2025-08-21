@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
-import { CircleDashed, CheckCircle, AlertTriangle } from 'lucide-react';
+import { CircleDashed, CheckCircle, AlertTriangle, Bot } from 'lucide-react';
 import { UnifiedMessage, ParsedContent, ParsedMetadata } from '@/components/thread/types';
 import { FileAttachmentGrid } from '@/components/thread/file-attachment';
 import { useFilePreloader } from '@/hooks/react-query/files';
@@ -355,7 +355,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
     project,
     debugMode = false,
     isPreviewMode = false,
-    agentName = 'Suna',
+    agentName = 'MEVO Default Agent',
     agentAvatar = <KortixLogo size={16} />,
     emptyStateComponent,
     threadMetadata,
@@ -451,7 +451,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
         }
 
         return {
-            name: agentName || 'Suna',
+            name: agentName || 'MEVO Default Agent',
             avatar: agentAvatar
         };
     }, [threadMetadata, displayMessages, agentName, agentAvatar, agentMetadata, agentData]);
