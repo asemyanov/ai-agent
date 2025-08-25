@@ -299,8 +299,8 @@ export function Navbar() {
                   aria-label="GitHub Repository"
                 >
                   <Github className="size-3.5" />
-                  <span className={`text-xs font-medium transition-opacity duration-200 ${starsLoading ? 'opacity-50' : 'opacity-100'}`}>
-                    ⭐ {formattedStars}
+                  <span className="text-xs font-medium transition-opacity duration-200 opacity-100">
+                    ⭐ Star
                   </span>
                 </Link>
 
