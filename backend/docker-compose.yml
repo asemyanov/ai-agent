@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      no_cache: true
     ports:
       - "8000:8000"
     env_file:
@@ -42,6 +43,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      no_cache: true
     command: uv run dramatiq --skip-logging --processes 4 --threads 4 run_agent_background
     env_file:
       - .env
