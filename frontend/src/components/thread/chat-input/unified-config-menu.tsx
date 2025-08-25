@@ -256,7 +256,7 @@ const LoggedInMenu: React.FC<UnifiedConfigMenuProps> = ({
                     {/* Quick Actions */}
                     {onAgentSelect && (selectedAgentId || displayAgent?.agent_id) && (
                         <div className="px-1.5">
-                            <DropdownMenuItem
+                            {/* <DropdownMenuItem
                                 className="text-sm px-3 py-2 mx-0 my-0.5 flex items-center gap-2 cursor-pointer rounded-lg"
                                 onClick={() => handleQuickAction('instructions')}
                             >
@@ -273,10 +273,10 @@ const LoggedInMenu: React.FC<UnifiedConfigMenuProps> = ({
                                 onClick={() => handleQuickAction('triggers')}
                             >
                                 <span className="font-medium">Triggers</span>
-                            </DropdownMenuItem>
+                            </DropdownMenuItem> */}
                             <DropdownMenuSub>
                                 <DropdownMenuSubTrigger className="flex items-center rounded-lg gap-2 px-3 py-2 mx-0 my-0.5">
-                                    <span className="font-medium">Playbooks</span>
+                                    <span className="font-medium">Workflows</span>
                                 </DropdownMenuSubTrigger>
                                 <DropdownMenuPortal>
                                     <DropdownMenuSubContent className="w-72 rounded-xl max-h-80 overflow-y-auto">
@@ -293,12 +293,13 @@ const LoggedInMenu: React.FC<UnifiedConfigMenuProps> = ({
                                                 </DropdownMenuItem>
                                             ))
                                         ) : (
-                                            <div className="px-3 py-2 text-xs text-muted-foreground">No playbooks</div>
+                                            <div className="px-3 py-2 text-xs text-muted-foreground">No Workflows</div>
                                         )}
                                     </DropdownMenuSubContent>
                                 </DropdownMenuPortal>
                             </DropdownMenuSub>
-                            <TooltipProvider>
+                            {/* Integrations section commented out */}
+                            {/* <TooltipProvider>
                                 <Tooltip>
                                     <TooltipTrigger asChild>
                                         <DropdownMenuItem
@@ -309,11 +310,8 @@ const LoggedInMenu: React.FC<UnifiedConfigMenuProps> = ({
                                             <div className="flex items-center gap-1.5">
                                                 {googleDriveIcon?.icon_url && slackIcon?.icon_url && notionIcon?.icon_url ? (
                                                     <>
-                                                        {/* eslint-disable-next-line @next/next/no-img-element */}
                                                         <img src={googleDriveIcon.icon_url} className="w-4 h-4" alt="Google Drive" />
-                                                        {/* eslint-disable-next-line @next/next/no-img-element */}
                                                         <img src={slackIcon.icon_url} className="w-3.5 h-3.5" alt="Slack" />
-                                                        {/* eslint-disable-next-line @next/next/no-img-element */}
                                                         <img src={notionIcon.icon_url} className="w-3.5 h-3.5" alt="Notion" />
                                                     </>
                                                 ) : (
@@ -331,7 +329,8 @@ const LoggedInMenu: React.FC<UnifiedConfigMenuProps> = ({
                                         <p>Open integrations</p>
                                     </TooltipContent>
                                 </Tooltip>
-                            </TooltipProvider>
+                            </TooltipProvider> */}
+                           
                         </div>
                     )}
                 </DropdownMenuContent>

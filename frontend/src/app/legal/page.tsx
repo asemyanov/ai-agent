@@ -157,9 +157,7 @@ function LegalContent() {
                     <p className="text-muted-foreground text-balance mb-6">
                       PLEASE READ THESE TERMS OF USE ("AGREEMENT" OR "TERMS OF
                       USE" or "TERMS OF SERVICE" or "TERMS AND CONDITIONS")
-                      CAREFULLY BEFORE USING THE SERVICES OFFERED BY Kortix AI
-                      Corp (701 Tillery Street Unit 12-2521 Austin, Texas 78702,
-                      United States). THIS AGREEMENT SETS FORTH THE LEGALLY
+                      CAREFULLY BEFORE USING THE SERVICES OFFERED BY US. THIS AGREEMENT SETS FORTH THE LEGALLY
                       BINDING TERMS AND CONDITIONS FOR YOUR USE OF THE SUNA
                       WEBSITE AND ALL RELATED SERVICES.
                     </p>
