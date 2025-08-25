@@ -441,7 +441,7 @@ export const ThreadContent: React.FC<ThreadContentProps> = ({
         // Fallback: if this is a Suna default agent, always show KortixLogo
         if (isSunaDefaultAgent) {
             return {
-                name: agentName || 'Suna',
+                name: agentName || 'MEVO',
                 avatar: (
                     <div className="h-5 w-5 flex items-center justify-center rounded text-xs">
                         <KortixLogo size={16} />
