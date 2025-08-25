@@ -29,7 +29,9 @@ SUNA_CONFIG = {
         "mcp_search_tool": True,
         "credential_profile_tool": True,
         "workflow_tool": True,
-        "trigger_tool": True
+        "trigger_tool": True,
+        "agent_discovery_tool": True,
+        "agent_execution_tool": True
     },
     "is_default": True
 }

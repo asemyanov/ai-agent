@@ -37,6 +37,8 @@ from agentpress.tool import SchemaType
 from agent.tools.sb_sheets_tool import SandboxSheetsTool
 from agent.tools.sb_web_dev_tool import SandboxWebDevTool
 from agent.tools.sb_upload_file_tool import SandboxUploadFileTool
+from agent.tools.agent_discovery_tool import AgentDiscoveryTool
+from agent.tools.agent_execution_tool import AgentExecutionTool
 
 load_dotenv()
 
@@ -59,10 +61,11 @@ class AgentConfig:
 
 
 class ToolManager:
-    def __init__(self, thread_manager: ThreadManager, project_id: str, thread_id: str):
+    def __init__(self, thread_manager: ThreadManager, project_id: str, thread_id: str, account_id: Optional[str] = None):
         self.thread_manager = thread_manager
         self.project_id = project_id
         self.thread_id = thread_id
+        self.account_id = account_id
     
     def register_all_tools(self, agent_id: Optional[str] = None, disabled_tools: Optional[List[str]] = None):
         """Register all available tools by default, with optional exclusions.
@@ -87,6 +90,9 @@ class ToolManager:
         # Agent builder tools - register if agent_id provided
         if agent_id:
             self._register_agent_builder_tools(agent_id, disabled_tools)
+        
+        # Always register agent communication tools
+        self._register_agent_communication_tools(disabled_tools)
         
         # Browser tool
         self._register_browser_tool(disabled_tools)
@@ -150,6 +156,27 @@ class ToolManager:
         for tool_name, tool_class in agent_builder_tools:
             if tool_name not in disabled_tools:
                 self.thread_manager.add_tool(tool_class, thread_manager=self.thread_manager, db_connection=db, agent_id=agent_id)
+                logger.debug(f"Registered {tool_name}")
+    
+    def _register_agent_communication_tools(self, disabled_tools: List[str]):
+        """Register agent-to-agent communication tools."""
+        if not self.account_id:
+            logger.warning("Agent communication tools disabled: account_id not available")
+            return
+            
+        agent_comm_tools = [
+            ('agent_discovery_tool', AgentDiscoveryTool),
+            ('agent_execution_tool', AgentExecutionTool),
+        ]
+        
+        for tool_name, tool_class in agent_comm_tools:
+            if tool_name not in disabled_tools:
+                self.thread_manager.add_tool(
+                    tool_class, 
+                    project_id=self.project_id, 
+                    thread_manager=self.thread_manager, 
+                    account_id=self.account_id
+                )
                 logger.debug(f"Registered {tool_name}")
     
     def _register_browser_tool(self, disabled_tools: List[str]):
@@ -471,7 +498,7 @@ class AgentRunner:
             logger.debug(f"No sandbox found for project {self.config.project_id}; will create lazily when needed")
     
     async def setup_tools(self):
-        tool_manager = ToolManager(self.thread_manager, self.config.project_id, self.config.thread_id)
+        tool_manager = ToolManager(self.thread_manager, self.config.project_id, self.config.thread_id, self.account_id)
         
         # Determine agent ID for agent builder tools
         agent_id = None

@@ -25,6 +25,10 @@ export const AGENTPRESS_TOOL_DEFINITIONS: Record<string, { enabled: boolean; des
     'credential_profile_tool': { enabled: true, description: 'Manage credential profiles for secure integration authentication', icon: '🔐', color: 'bg-red-100 dark:bg-red-800/50' },
     'workflow_tool': { enabled: true, description: 'Create and manage automated workflows and task sequences', icon: '🔄', color: 'bg-emerald-100 dark:bg-emerald-800/50' },
     'trigger_tool': { enabled: true, description: 'Set up event triggers and scheduled automation', icon: '⏰', color: 'bg-amber-100 dark:bg-amber-800/50' },
+    
+    // Agent communication tools
+    'agent_discovery_tool': { enabled: true, description: 'Discover and list other available agents and their workflows in your account for collaboration', icon: '🤖', color: 'bg-blue-100 dark:bg-blue-800/50' },
+    'agent_execution_tool': { enabled: true, description: 'Execute other agents with prompts or workflows for multi-agent coordination', icon: '🔗', color: 'bg-purple-100 dark:bg-purple-800/50' },
 };
 
 export const DEFAULT_AGENTPRESS_TOOLS: Record<string, boolean> = Object.entries(AGENTPRESS_TOOL_DEFINITIONS).reduce((acc, [key, value]) => {
@@ -60,6 +64,10 @@ export const getToolDisplayName = (toolName: string): string => {
       'credential_profile_tool': 'Agent Builder Credential Profiles',
       'workflow_tool': 'Agent Builder Workflows',
       'trigger_tool': 'Agent Builder Triggers',
+      
+      // Agent communication tools
+      'agent_discovery_tool': 'Agent Discovery',
+      'agent_execution_tool': 'Agent Execution',
     };
     
     return displayNames[toolName] || toolName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());

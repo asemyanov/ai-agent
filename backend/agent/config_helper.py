@@ -213,7 +213,9 @@ def _get_default_agentpress_tools() -> Dict[str, bool]:
         "mcp_search_tool": True,
         "credential_profile_tool": True,
         "workflow_tool": True,
-        "trigger_tool": True
+        "trigger_tool": True,
+        "agent_discovery_tool": True,
+        "agent_execution_tool": True
     }
 
 
