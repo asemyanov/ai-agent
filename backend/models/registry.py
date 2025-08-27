@@ -152,26 +152,6 @@ class ModelRegistry:
             enabled=True
         ))
 
-        self.register(Model(
-            id="openai/gpt-oss-120b",
-            name="Fast GPT",
-            provider=ModelProvider.OPENROUTER,
-            aliases=["openai/gpt-oss-120b", "gpt-oss-120b", "GPT-OSS-120B", "openai/gpt-oss-120b", "Fast GPT"],
-            context_window=128_000,
-            capabilities=[
-                ModelCapability.CHAT,
-                ModelCapability.FUNCTION_CALLING,
-                ModelCapability.THINKING,
-            ],
-            pricing=ModelPricing(
-                input_cost_per_million_tokens=0.13,
-                output_cost_per_million_tokens=0.60
-            ),
-            tier_availability=["free", "paid"],
-            priority=80,
-            enabled=True
-        ))
-
         """
         # DeepSeek Models
         self.register(Model(
