@@ -156,7 +156,7 @@ class ModelRegistry:
             id="openai/gpt-oss-120b",
             name="Fast GPT",
             provider=ModelProvider.OPENROUTER,
-            aliases=["openai/gpt-oss-120b", "gpt-oss-120b", "GPT-OSS-120B", "openai/gpt-oss-120b", "Fast"],
+            aliases=["openai/gpt-oss-120b", "gpt-oss-120b", "GPT-OSS-120B", "openai/gpt-oss-120b", "Fast GPT"],
             context_window=128_000,
             capabilities=[
                 ModelCapability.CHAT,
