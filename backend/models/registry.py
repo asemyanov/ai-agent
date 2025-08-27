@@ -43,6 +43,7 @@ class ModelRegistry:
                 ModelCapability.CHAT,
                 ModelCapability.FUNCTION_CALLING,
                 ModelCapability.STRUCTURED_OUTPUT,
+                ModelCapability.THINKING,
             ],
             pricing=ModelPricing(
                 input_cost_per_million_tokens=0.25,
