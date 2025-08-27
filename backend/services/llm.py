@@ -248,7 +248,7 @@ def _configure_thinking(params: Dict[str, Any], model_name: str, enable_thinking
     is_anthropic = "anthropic" in model_name.lower() or "claude" in model_name.lower()
     is_xai = "xai" in model_name.lower() or model_name.startswith("xai/")
     is_deepseek = "deepseek" in model_name.lower() or "custom" in model_name.lower()
-    is_openai = "openai" in model_name.lower() or "gpt" in model_name.lower()
+    is_openai = "openai" in model_name.lower() or "gpt" in model_name.lower() or "medic" in model_name.lower()
     
     if is_anthropic:
         params["reasoning_effort"] = effort_level

@@ -37,13 +37,13 @@ class ModelRegistry:
             id="openrouter/openai/gpt-5-mini",
             name="Medic 🚑🏥🩻",
             provider=ModelProvider.OPENROUTER,
-            aliases=["gpt-5-mini", "GPT-5 Mini"],
+            aliases=["gpt-5-mini", "GPT-5 Mini", "Medic 🚑🏥🩻","openrouter/openai/gpt-5-mini"],
             context_window=400_000,
             capabilities=[
                 ModelCapability.CHAT,
                 ModelCapability.FUNCTION_CALLING,
-                ModelCapability.STRUCTURED_OUTPUT,
                 ModelCapability.THINKING,
+                ModelCapability.VISION,
             ],
             pricing=ModelPricing(
                 input_cost_per_million_tokens=0.25,
@@ -78,7 +78,7 @@ class ModelRegistry:
             id="openrouter/google/gemini-2.5-flash",
             name="Clerk 💨⚡️🚀",
             provider=ModelProvider.OPENROUTER,
-            aliases=["google/gemini-2.5-flash","gemini-2.5-flash", "Gemini 2.5 Flash"],
+            aliases=["google/gemini-2.5-flash","gemini-2.5-flash", "Gemini 2.5 Flash", "Clerk 💨⚡️🚀","openrouter/google/gemini-2.5-flash"],
             context_window=1_000_000,
             capabilities=[
                 ModelCapability.CHAT,
@@ -114,24 +114,6 @@ class ModelRegistry:
             enabled=True
         ))
         
-        self.register(Model(
-            id="openrouter/moonshotai/kimi-k2",
-            name="Kimi K2",
-            provider=ModelProvider.OPENROUTER,
-            aliases=["moonshotai/kimi-k2", "kimi-k2", "Kimi K2"],
-            context_window=200_000,
-            capabilities=[
-                ModelCapability.CHAT,
-                ModelCapability.FUNCTION_CALLING,
-            ],
-            pricing=ModelPricing(
-                input_cost_per_million_tokens=1.00,
-                output_cost_per_million_tokens=3.00
-            ),
-            tier_availability=["paid"],
-            priority=100,
-            enabled=False
-        ))
 
         self.register(Model(
             id="openrouter/deepseek/deepseek-chat-v3.1",
