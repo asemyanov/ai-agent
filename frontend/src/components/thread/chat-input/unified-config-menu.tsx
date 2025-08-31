@@ -276,7 +276,7 @@ const LoggedInMenu: React.FC<UnifiedConfigMenuProps> = ({
                             </DropdownMenuItem> */}
                             <DropdownMenuSub>
                                 <DropdownMenuSubTrigger className="flex items-center rounded-lg gap-2 px-3 py-2 mx-0 my-0.5">
-                                    <span className="font-medium">Workflows</span>
+                                    <span className="font-medium">Playbooks</span>
                                 </DropdownMenuSubTrigger>
                                 <DropdownMenuPortal>
                                     <DropdownMenuSubContent className="w-72 rounded-xl max-h-80 overflow-y-auto">
@@ -293,7 +293,7 @@ const LoggedInMenu: React.FC<UnifiedConfigMenuProps> = ({
                                                 </DropdownMenuItem>
                                             ))
                                         ) : (
-                                            <div className="px-3 py-2 text-xs text-muted-foreground">No Workflows</div>
+                                            <div className="px-3 py-2 text-xs text-muted-foreground">No Playbooks</div>
                                         )}
                                     </DropdownMenuSubContent>
                                 </DropdownMenuPortal>

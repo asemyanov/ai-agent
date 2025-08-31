@@ -47,7 +47,7 @@ const dashboardTourSteps: Step[] = [
   },
   {
     target: '[data-tour="my-agents"]',
-    content: 'Create and manage your custom AI agents here. Build specialized agents for different tasks and workflows.',
+    content: 'Create and manage your custom AI agents here. Build specialized agents for different tasks and playbooks.',
     title: 'Manage Your Agents',
     placement: 'right',
     disableBeacon: true,

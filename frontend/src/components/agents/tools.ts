@@ -23,7 +23,7 @@ export const AGENTPRESS_TOOL_DEFINITIONS: Record<string, { enabled: boolean; des
     'agent_config_tool': { enabled: true, description: 'Configure agent settings, tools, and integrations', icon: '⚙️', color: 'bg-gray-100 dark:bg-gray-800/50' },
     'mcp_search_tool': { enabled: true, description: 'Search and discover MCP servers and integrations for external services', icon: '🔍', color: 'bg-teal-100 dark:bg-teal-800/50' },
     'credential_profile_tool': { enabled: true, description: 'Manage credential profiles for secure integration authentication', icon: '🔐', color: 'bg-red-100 dark:bg-red-800/50' },
-    'workflow_tool': { enabled: true, description: 'Create and manage automated workflows and task sequences', icon: '🔄', color: 'bg-emerald-100 dark:bg-emerald-800/50' },
+    'workflow_tool': { enabled: true, description: 'Create and manage automated playbooks and task sequences', icon: '🔄', color: 'bg-emerald-100 dark:bg-emerald-800/50' },
     'trigger_tool': { enabled: true, description: 'Set up event triggers and scheduled automation', icon: '⏰', color: 'bg-amber-100 dark:bg-amber-800/50' },
 };
 
@@ -55,7 +55,7 @@ export const getToolDisplayName = (toolName: string): string => {
       'agent_config_tool': 'Agent Configuration',
       'mcp_search_tool': 'MCP Server Search',
       'credential_profile_tool': 'Credential Profiles',
-      'workflow_tool': 'Workflow Management',
+      'workflow_tool': 'Playbook Management',
       'trigger_tool': 'Trigger Management',
     };
     

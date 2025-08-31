@@ -219,7 +219,7 @@ export function TasksPage() {
           <Alert variant="destructive">
             <AlertCircle className="h-4 w-4" />
             <AlertDescription>
-              Failed to load tasks. Please try refreshing the page.
+              Failed to load schedule. Please try refreshing the page.
             </AlertDescription>
           </Alert>
         </div>
@@ -236,12 +236,12 @@ export function TasksPage() {
             selectedTrigger ? "max-w-2xl" : "max-w-4xl"
           )}>
             <div className="flex items-center justify-between py-10">
-              <h1 className="text-xl font-semibold">Tasks</h1>
+              <h1 className="text-xl font-semibold">Schedule</h1>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" size="sm">
                     <Plus className="h-4 w-4" />
-                    New task
+                    New schedule
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-72">

@@ -193,7 +193,7 @@ export function SidebarLeft({
             >
               <Zap className="h-4 w-4 mr-1" />
               <span className="flex items-center justify-between w-full">
-                Tasks
+                Schedule
               </span>
             </SidebarMenuButton>
           </Link>
