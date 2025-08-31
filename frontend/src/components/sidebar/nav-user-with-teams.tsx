@@ -308,7 +308,7 @@ export function NavUserWithTeams({
                     </Link>
                   </DropdownMenuItem>
                 )}
-                {(
+                {/* {!flagLoading && customAgentsEnabled && (
                   <DropdownMenuItem asChild>
                     <Link href="/settings/api-keys">
                       <Key className="h-4 w-4" />
@@ -321,7 +321,7 @@ export function NavUserWithTeams({
                     <KeyRound className="h-4 w-4" />
                     Local .Env Manager
                   </Link>
-                </DropdownMenuItem>}
+                </DropdownMenuItem>} */}
                 {/* <DropdownMenuItem asChild>
                   <Link href="/settings">
                     <Settings className="mr-2 h-4 w-4" />

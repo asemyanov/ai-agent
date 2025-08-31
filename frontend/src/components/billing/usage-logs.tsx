@@ -295,7 +295,7 @@ export default function UsageLogs({ accountId }: Props) {
                                 </TableCell>
                                 <TableCell className="text-xs">
                                   <Badge variant="secondary" className="font-mono text-xs">
-                                    {log.content.model.replace('openrouter/', '').replace('anthropic/', '')}
+                                    {log.content.model}
                                   </Badge>
                                 </TableCell>
                                 <TableCell className="text-right font-mono text-xs">
