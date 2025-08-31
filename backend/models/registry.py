@@ -1,8 +1,8 @@
 from typing import Dict, List, Optional, Set
 from .models import Model, ModelProvider, ModelCapability, ModelPricing
 
-DEFAULT_FREE_MODEL = "Kimi K2"
-DEFAULT_PREMIUM_MODEL = "Claude Sonnet 4"
+DEFAULT_FREE_MODEL = "openrouter/google/gemini-2.5-flash"
+DEFAULT_PREMIUM_MODEL = "openrouter/google/gemini-2.5-flash"
 
 class ModelRegistry:
     def __init__(self):
@@ -15,7 +15,7 @@ class ModelRegistry:
             id="anthropic/claude-sonnet-4-20250514",
             name="Claude Sonnet 4",
             provider=ModelProvider.ANTHROPIC,
-            aliases=["claude-sonnet-4", "anthropic/claude-sonnet-4", "Claude Sonnet 4", "claude-sonnet-4-20250514"],
+            aliases=["claude-sonnet-4", "anthropic/claude-sonnet-4", "IT Expert💰💸", "Claude Sonnet 4", "claude-sonnet-4-20250514"],
             context_window=200_000,
             capabilities=[
                 ModelCapability.CHAT,
@@ -34,76 +34,16 @@ class ModelRegistry:
         ))
         
         self.register(Model(
-            id="anthropic/claude-3-7-sonnet-latest",
-            name="Claude 3.7 Sonnet",
-            provider=ModelProvider.ANTHROPIC,
-            aliases=["sonnet-3.7", "claude-3.7", "Claude 3.7 Sonnet", "claude-3-7-sonnet-latest"],
-            context_window=200_000,
-            capabilities=[
-                ModelCapability.CHAT,
-                ModelCapability.FUNCTION_CALLING,
-                ModelCapability.VISION,
-            ],
-            pricing=ModelPricing(
-                input_cost_per_million_tokens=3.00,
-                output_cost_per_million_tokens=15.00
-            ),
-            tier_availability=["paid"],
-            priority=93,
-            enabled=True
-        ))
-        
-        self.register(Model(
-            id="anthropic/claude-3-5-sonnet-latest",
-            name="Claude 3.5 Sonnet",
-            provider=ModelProvider.ANTHROPIC,
-            aliases=["sonnet-3.5", "claude-3.5", "Claude 3.5 Sonnet", "claude-3-5-sonnet-latest"],
-            context_window=200_000,
-            capabilities=[
-                ModelCapability.CHAT,
-                ModelCapability.FUNCTION_CALLING,
-                ModelCapability.VISION,
-            ],
-            pricing=ModelPricing(
-                input_cost_per_million_tokens=3.00,
-                output_cost_per_million_tokens=15.00
-            ),
-            tier_availability=["paid"],
-            priority=90,
-            enabled=True
-        ))
-        
-        self.register(Model(
-            id="openai/gpt-5",
-            name="GPT-5",
-            provider=ModelProvider.OPENAI,
-            aliases=["gpt-5", "GPT-5"],
+            id="openrouter/openai/gpt-5-mini",
+            name="Medic 🚑🏥🩻",
+            provider=ModelProvider.OPENROUTER,
+            aliases=["gpt-5-mini", "GPT-5 Mini", "Medic 🚑🏥🩻","openrouter/openai/gpt-5-mini"],
             context_window=400_000,
             capabilities=[
                 ModelCapability.CHAT,
                 ModelCapability.FUNCTION_CALLING,
+                ModelCapability.THINKING,
                 ModelCapability.VISION,
-                ModelCapability.STRUCTURED_OUTPUT,
-            ],
-            pricing=ModelPricing(
-                input_cost_per_million_tokens=1.25,
-                output_cost_per_million_tokens=10.00
-            ),
-            tier_availability=["paid"],
-            priority=99,
-            enabled=True
-        ))
-        
-        self.register(Model(
-            id="openai/gpt-5-mini",
-            name="GPT-5 Mini",
-            provider=ModelProvider.OPENAI,
-            aliases=["gpt-5-mini", "GPT-5 Mini"],
-            context_window=400_000,
-            capabilities=[
-                ModelCapability.CHAT,
-                ModelCapability.FUNCTION_CALLING,
-                ModelCapability.STRUCTURED_OUTPUT,
             ],
             pricing=ModelPricing(
                 input_cost_per_million_tokens=0.25,
@@ -115,11 +55,11 @@ class ModelRegistry:
         ))
         
         self.register(Model(
-            id="gemini/gemini-2.5-pro",
+            id="openrouter/google/gemini-2.5-pro",
             name="Gemini 2.5 Pro",
-            provider=ModelProvider.GOOGLE,
+            provider=ModelProvider.OPENROUTER,
             aliases=["google/gemini-2.5-pro", "gemini-2.5-pro", "Gemini 2.5 Pro"],
-            context_window=2_000_000,
+            context_window=1_000_000,
             capabilities=[
                 ModelCapability.CHAT,
                 ModelCapability.FUNCTION_CALLING,
@@ -134,7 +74,52 @@ class ModelRegistry:
             priority=96,
             enabled=True
         ))
+        self.register(Model(
+            id="openrouter/google/gemini-2.5-flash",
+            name="Clerk 💨⚡️🚀",
+            provider=ModelProvider.OPENROUTER,
+            aliases=["google/gemini-2.5-flash","gemini-2.5-flash", "Gemini 2.5 Flash", "Clerk 💨⚡️🚀", "Clerk", "openrouter/google/gemini-2.5-flash"],
+            context_window=1_000_000,
+            capabilities=[
+                ModelCapability.CHAT,
+                ModelCapability.FUNCTION_CALLING,
+                ModelCapability.VISION,
+            ],
+            pricing=ModelPricing(
+                input_cost_per_million_tokens=0.30,
+                output_cost_per_million_tokens=2.50
+            ),
+            tier_availability=["free", "paid"],
+            priority=100,
+            enabled=True
+        ))
+
         
+        self.register(Model(
+            id="openrouter/deepseek/deepseek-chat-v3.1",
+            name="Custom MEVO",
+            provider=ModelProvider.OPENROUTER,
+            aliases=["deepseek/deepseek-chat-v3.1", "deepseek-chat-v3.1", "DeepSeek Chat V3.1", "openrouter/deepseek/deepseek-chat-v3.1", "Custom MEVO"],
+            context_window=163_000,
+            capabilities=[
+                ModelCapability.CHAT,
+                ModelCapability.FUNCTION_CALLING,
+                ModelCapability.THINKING,
+                ModelCapability.VISION,
+            ],
+            pricing=ModelPricing(
+                input_cost_per_million_tokens=0.60,
+                output_cost_per_million_tokens=1.50
+            ),
+            tier_availability=["free", "paid"],
+            priority=95,
+            enabled=True
+        ))
+
+
+
+
+
         self.register(Model(
             id="xai/grok-4",
             name="Grok 4",

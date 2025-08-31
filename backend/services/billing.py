@@ -18,6 +18,7 @@ from services.supabase import DBConnection
 from utils.auth_utils import get_current_user_id_from_jwt
 from pydantic import BaseModel
 from models import model_manager
+from models.registry import registry
 from litellm.cost_calculator import cost_per_token
 import time
 import json
@@ -26,20 +27,21 @@ import json
 stripe.api_key = config.STRIPE_SECRET_KEY
 
 # Token price multiplier
-TOKEN_PRICE_MULTIPLIER = 1.5
+TOKEN_PRICE_MULTIPLIER = 2.0
 
 # Minimum credits required to allow a new request when over subscription limit
 CREDIT_MIN_START_DOLLARS = 0.20
 
 # Credit packages with Stripe price IDs
+# TEMPORARILY DISABLED - Stripe credits feature causing startup issues
 CREDIT_PACKAGES = {
-    'credits_10': {'amount': 10, 'price': 10, 'stripe_price_id': config.STRIPE_CREDITS_10_PRICE_ID},
-    'credits_25': {'amount': 25, 'price': 25, 'stripe_price_id': config.STRIPE_CREDITS_25_PRICE_ID},
-    # Uncomment these when you create the additional price IDs in Stripe:
-    'credits_50': {'amount': 50, 'price': 50, 'stripe_price_id': config.STRIPE_CREDITS_50_PRICE_ID},
-    'credits_100': {'amount': 100, 'price': 100, 'stripe_price_id': config.STRIPE_CREDITS_100_PRICE_ID},
-    'credits_250': {'amount': 250, 'price': 250, 'stripe_price_id': config.STRIPE_CREDITS_250_PRICE_ID},
-    'credits_500': {'amount': 500, 'price': 500, 'stripe_price_id': config.STRIPE_CREDITS_500_PRICE_ID}
+    # 'credits_10': {'amount': 10, 'price': 10, 'stripe_price_id': config.STRIPE_CREDITS_10_PRICE_ID},
+    # 'credits_25': {'amount': 25, 'price': 25, 'stripe_price_id': config.STRIPE_CREDITS_25_PRICE_ID},
+    # # Uncomment these when you create the additional price IDs in Stripe:
+    # 'credits_50': {'amount': 50, 'price': 50, 'stripe_price_id': config.STRIPE_CREDITS_50_PRICE_ID},
+    # 'credits_100': {'amount': 100, 'price': 100, 'stripe_price_id': config.STRIPE_CREDITS_100_PRICE_ID},
+    # 'credits_250': {'amount': 250, 'price': 250, 'stripe_price_id': config.STRIPE_CREDITS_250_PRICE_ID},
+    # 'credits_500': {'amount': 500, 'price': 500, 'stripe_price_id': config.STRIPE_CREDITS_500_PRICE_ID}
 }
 
 router = APIRouter(prefix="/billing", tags=["billing"])
@@ -135,7 +137,7 @@ def get_model_pricing(model: str) -> tuple[float, float] | None:
 
 
 SUBSCRIPTION_TIERS = {
-    config.STRIPE_FREE_TIER_ID: {'name': 'free', 'minutes': 60, 'cost': 5},
+    config.STRIPE_FREE_TIER_ID: {'name': 'free', 'minutes': 60, 'cost': 10},
     config.STRIPE_TIER_2_20_ID: {'name': 'tier_2_20', 'minutes': 120, 'cost': 20 + 5},  # 2 hours
     config.STRIPE_TIER_6_50_ID: {'name': 'tier_6_50', 'minutes': 360, 'cost': 50 + 5},  # 6 hours
     config.STRIPE_TIER_12_100_ID: {'name': 'tier_12_100', 'minutes': 720, 'cost': 100 + 5},  # 12 hours
@@ -644,6 +646,19 @@ async def get_usage_logs(client, user_id: str, page: int = 0, items_per_page: in
                 except Exception as project_error:
                     logger.warning(f"[USAGE_LOGS] user_id={user_id} - Error extracting project_id for message {message_id}: {str(project_error)}")
                 
+                # Get display name from registry, fallback to cleaned model name
+                model_display_name = model
+                try:
+                    model_from_registry = registry.get(model)
+                    if model_from_registry and model_from_registry.name:
+                        model_display_name = model_from_registry.name
+                    else:
+                        # Fallback to the old string replacement method if not in registry
+                        model_display_name = model.replace('openrouter/', '').replace('anthropic/', '')
+                except Exception as registry_error:
+                    logger.warning(f"[USAGE_LOGS] user_id={user_id} - Error getting model from registry for {model}: {str(registry_error)}")
+                    model_display_name = model.replace('openrouter/', '').replace('anthropic/', '')
+                
                 # Check if credits were used for this message
                 credit_used = credit_usage_map.get(message_id, {})
                 
@@ -667,7 +682,7 @@ async def get_usage_logs(client, user_id: str, page: int = 0, items_per_page: in
                             'prompt_tokens': int(prompt_tokens),
                             'completion_tokens': int(completion_tokens)
                         },
-                        'model': str(model)
+                        'model': str(model_display_name)
                     },
                     'total_tokens': int(total_tokens),
                     'estimated_cost': float(estimated_cost),

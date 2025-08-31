@@ -102,7 +102,7 @@ def get_openrouter_fallback(model_name: str) -> Optional[str]:
     # Map models to their OpenRouter equivalents
     fallback_mapping = {
         "anthropic/claude-3-7-sonnet-latest": "openrouter/anthropic/claude-3.7-sonnet",
-        "anthropic/claude-sonnet-4-20250514": "openrouter/anthropic/claude-sonnet-4",
+        "bedrock/us.anthropic.claude-sonnet-4-20250514-v1:0": "openrouter/anthropic/claude-sonnet-4",
         "xai/grok-4": "openrouter/x-ai/grok-4",
         "gemini/gemini-2.5-pro": "openrouter/google/gemini-2.5-pro",
     }
@@ -247,6 +247,8 @@ def _configure_thinking(params: Dict[str, Any], model_name: str, enable_thinking
     effort_level = reasoning_effort or 'low'
     is_anthropic = "anthropic" in model_name.lower() or "claude" in model_name.lower()
     is_xai = "xai" in model_name.lower() or model_name.startswith("xai/")
+    is_deepseek = "deepseek" in model_name.lower() or "custom" in model_name.lower()
+    is_openai = "openai" in model_name.lower() or "gpt" in model_name.lower() or "medic" in model_name.lower()
     
     if is_anthropic:
         params["reasoning_effort"] = effort_level
@@ -255,6 +257,12 @@ def _configure_thinking(params: Dict[str, Any], model_name: str, enable_thinking
     elif is_xai:
         params["reasoning_effort"] = effort_level
         logger.info(f"xAI thinking enabled with reasoning_effort='{effort_level}'")
+    elif is_deepseek:
+        params["reasoning_effort"] = effort_level
+        logger.info(f"DeepSeek thinking enabled with reasoning_effort='{effort_level}'")
+    elif is_openai:
+        params["reasoning_effort"] = effort_level
+        logger.info(f"OpenAI thinking enabled with reasoning_effort='{effort_level}'")
 
 def _add_fallback_model(params: Dict[str, Any], model_name: str, messages: List[Dict[str, Any]]) -> None:
     """Add fallback model to the parameters."""
