@@ -373,7 +373,7 @@ class AgentExecutor:
                 from models import model_manager
                 model_name = await model_manager.get_default_model_for_user(client, account_id)
             else:
-                model_name = "Kimi K2"
+                model_name = "Clerk"
         
         account_id = agent_config.get('account_id')
         if not account_id:
@@ -676,7 +676,7 @@ class WorkflowExecutor:
                 from models import model_manager
                 model_name = await model_manager.get_default_model_for_user(client, account_id)
             else:
-                model_name = "Kimi K2"
+                model_name = "Clerk"
         
         account_id = agent_config.get('account_id')
         if not account_id:

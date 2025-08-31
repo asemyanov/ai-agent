@@ -4,14 +4,14 @@ import { siteConfig } from '@/lib/site';
 export const metadata: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
-  keywords: ['Kortix Suna', 'Kortix', 'Suna', 'AI', 'Agent', 'Open Source'],
+  keywords: ['MEVO', 'AI', 'Agent'],
   authors: [
     {
-      name: 'Kortix AI Corp',
-      url: 'https://kortix.ai',
+      name: 'MEVO Corp',
+      url: 'https://mevoagent.com',
     },
   ],
-  creator: 'Kortix AI Corp',
+  creator: 'MEVO Corp',
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -32,8 +32,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
-    creator: '@kortixai',
-    images: ['/banner.png'],
+    creator: '@mevoagent',
   },
   robots: {
     index: true,

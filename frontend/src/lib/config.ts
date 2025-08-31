@@ -46,77 +46,77 @@ interface Config {
 // Production tier IDs
 const PROD_TIERS: SubscriptionTiers = {
   FREE: {
-    priceId: 'price_1RILb4G6l1KZGqIrK4QLrx9i',
+    priceId: 'price_1Rskv5PA6ngq7HqUpjHARY5K',
     name: 'Free',
   },
   TIER_2_20: {
-    priceId: 'price_1RILb4G6l1KZGqIrhomjgDnO',
+    priceId: 'price_1Rskv5PA6ngq7HqUE4yuvihy',
     name: '2h/$20',
   },
   TIER_6_50: {
-    priceId: 'price_1RILb4G6l1KZGqIr5q0sybWn',
+    priceId: 'price_1Rskv5PA6ngq7HqU75HMYmgX',
     name: '6h/$50',
   },
   TIER_12_100: {
-    priceId: 'price_1RILb4G6l1KZGqIr5Y20ZLHm',
+    priceId: 'price_1Rskv5PA6ngq7HqUpY1Vuho6',
     name: '12h/$100',
   },
   TIER_25_200: {
-    priceId: 'price_1RILb4G6l1KZGqIrGAD8rNjb',
+    priceId: 'price_1Rskv5PA6ngq7HqUoSqcENlm',
     name: '25h/$200',
   },
   TIER_50_400: {
-    priceId: 'price_1RILb4G6l1KZGqIruNBUMTF1',
+    priceId: 'price_1Rskv5PA6ngq7HqUUajSvBqN',
     name: '50h/$400',
   },
   TIER_125_800: {
-    priceId: 'price_1RILb3G6l1KZGqIrbJA766tN',
+    priceId: 'price_1Rskv5PA6ngq7HqUkdrI3lUh',
     name: '125h/$800',
   },
   TIER_200_1000: {
-    priceId: 'price_1RILb3G6l1KZGqIrmauYPOiN',
+    priceId: 'price_1Rskv5PA6ngq7HqUS0E9z6Qr',
     name: '200h/$1000',
   },
   // Legacy yearly plans with 15% discount (12x monthly price with 15% off)
   TIER_2_20_YEARLY: {
-    priceId: 'price_1ReHB5G6l1KZGqIrD70I1xqM',
+    priceId: 'price_1Rskv5PA6ngq7HqUuyMrINo0',
     name: '2h/$204/year (legacy)',
   },
   TIER_6_50_YEARLY: {
-    priceId: 'price_1ReHAsG6l1KZGqIrlAog487C',
+    priceId: 'price_1Rskv5PA6ngq7HqUEDN8Up7u',
     name: '6h/$510/year (legacy)',
   },
   TIER_12_100_YEARLY: {
-    priceId: 'price_1ReHAWG6l1KZGqIrBHer2PQc',
+    priceId: 'price_1Rskv5PA6ngq7HqUeYeXSLWb',
     name: '12h/$1020/year (legacy)',
   },
   TIER_25_200_YEARLY: {
-    priceId: 'price_1ReH9uG6l1KZGqIrsvMLHViC',
+    priceId: 'price_1Rskv4PA6ngq7HqUmx9mCQZP',
     name: '25h/$2040/year (legacy)',
   },
   TIER_50_400_YEARLY: {
-    priceId: 'price_1ReH9fG6l1KZGqIrsPtu5KIA',
+    priceId: 'price_1Rskv4PA6ngq7HqU4dcc8VfY',
     name: '50h/$4080/year (legacy)',
   },
   TIER_125_800_YEARLY: {
-    priceId: 'price_1ReH9GG6l1KZGqIrfgqaJyat',
+    priceId: 'price_1Rskv4PA6ngq7HqUNuKAzAEy',
     name: '125h/$8160/year (legacy)',
   },
   TIER_200_1000_YEARLY: {
-    priceId: 'price_1ReH8qG6l1KZGqIrK1akY90q',
+    priceId: 'price_1Rskv4PA6ngq7HqUyYTk3duo',
     name: '200h/$10200/year (legacy)',
   },
   // Yearly commitment plans (15% discount, monthly payments with 12-month commitment)
   TIER_2_17_YEARLY_COMMITMENT: {
-    priceId: 'price_1RqtqiG6l1KZGqIrhjVPtE1s',
+    priceId: 'price_1Rskv4PA6ngq7HqUw2QZ7b1h',
     name: '2h/$17/month (yearly)',
   },
   TIER_6_42_YEARLY_COMMITMENT: {
-    priceId: 'price_1Rqtr8G6l1KZGqIrQ0ql0qHi',
+    priceId: 'price_1Rskv4PA6ngq7HqU0HxMUEMP',
     name: '6h/$42.50/month (yearly)',
   },
   TIER_25_170_YEARLY_COMMITMENT: {
-    priceId: 'price_1RqtrUG6l1KZGqIrEb8hLsk3',
+    priceId: 'price_1Rskv4PA6ngq7HqUyHmxD6Lm',
     name: '25h/$170/month (yearly)',
   },
 } as const;
@@ -124,11 +124,11 @@ const PROD_TIERS: SubscriptionTiers = {
 // Staging tier IDs
 const STAGING_TIERS: SubscriptionTiers = {
   FREE: {
-    priceId: 'price_1RIGvuG6l1KZGqIrw14abxeL',
+    priceId: 'price_1Rskf1PA6ngq7HqUBVQwuKKn',
     name: 'Free',
   },
   TIER_2_20: {
-    priceId: 'price_1RIGvuG6l1KZGqIrCRu0E4Gi',
+    priceId: 'price_1RskfBPA6ngq7HqUnfyIt89g',
     name: '2h/$20',
   },
   TIER_6_50: {
@@ -200,7 +200,7 @@ const STAGING_TIERS: SubscriptionTiers = {
 } as const;
 
 function getEnvironmentMode(): EnvMode {
-  const envMode = process.env.NEXT_PUBLIC_ENV_MODE.toUpperCase();
+  const envMode = process.env.NEXT_PUBLIC_ENV_MODE?.toUpperCase() || '';
   switch (envMode) {
     case 'LOCAL':
       return EnvMode.LOCAL;
@@ -208,12 +208,12 @@ function getEnvironmentMode(): EnvMode {
       return EnvMode.STAGING;
     case 'PRODUCTION':
       return EnvMode.PRODUCTION;
-  //   default:
-  //     if (process.env.NODE_ENV === 'development') {
-  //       return EnvMode.LOCAL;
-  //     } else {
-  //       return EnvMode.PRODUCTION;
-  //     }
+    default:
+      if (process.env.NODE_ENV === 'development') {
+        return EnvMode.LOCAL;
+      } else {
+        return EnvMode.PRODUCTION;
+      }
   }
 }
 

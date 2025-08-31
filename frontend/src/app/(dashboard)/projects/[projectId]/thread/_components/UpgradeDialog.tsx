@@ -29,30 +29,30 @@ export function UpgradeDialog({ open, onOpenChange, onDismiss }: UpgradeDialogPr
 
   return (
     <>
-      <UnifiedUpgradeDialog
-        open={open}
-        onOpenChange={onOpenChange}
-        icon={Crown}
-        title="Unlock the Full Suna Experience"
-        description="You're currently using Suna's free tier with limited capabilities. Upgrade now to access our most powerful AI model."
-        theme="primary"
-        size="sm"
-        preventOutsideClick={true}
-        actions={[
-          {
-            label: "Maybe Later",
-            onClick: onDismiss,
-            variant: "outline"
-          },
-          {
-            label: "Upgrade Now",
-            onClick: handleUpgradeClick,
-            icon: Sparkles
-          }
-        ]}
-      >
-        <div className="py-4">
-          <h3 className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">Pro Benefits</h3>
+    <UnifiedUpgradeDialog
+      open={open}
+      onOpenChange={onOpenChange}
+      icon={Crown}
+      title="Unlock the Full MEVO AI Experience"
+      description="You're currently using MEVO AI's free tier with limited capabilities. Upgrade now to access our most powerful AI model."
+      theme="primary"
+      size="sm"
+      preventOutsideClick={true}
+      actions={[
+        {
+          label: "Maybe Later",
+          onClick: onDismiss,
+          variant: "outline"
+        },
+        {
+          label: "Upgrade Now",
+          onClick: handleUpgradeClick,
+          icon: Sparkles
+        }
+      ]}
+    >
+      <div className="py-4">
+        <h3 className="text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">Pro Benefits</h3>
 
           <div className="space-y-3">
             <div className="flex items-start">

@@ -17,7 +17,7 @@ export default function ArchitecturePage() {
     <>
       <DocsHeader
         title="Platform Architecture"
-        subtitle="Understanding the core components and design of the Kortix platform"
+        subtitle="Understanding the core components and design of the Mevo platform"
         breadcrumbs={breadcrumbs}
         badge="Technical"
         lastUpdated="December 2024"
@@ -30,7 +30,7 @@ export default function ArchitecturePage() {
         <DocsBody className="mb-8">
           <h2>🏗️ Platform Architecture</h2>
           <p className="text-lg mb-6">
-            Kortix consists of four main components that work together to provide a complete AI agent development platform:
+            Mevo consists of four main components that work together to provide a complete AI agent development platform:
           </p>
         </DocsBody>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">

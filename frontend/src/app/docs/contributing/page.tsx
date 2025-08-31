@@ -19,8 +19,8 @@ export default function ContributingPage() {
   return (
     <>
       <DocsHeader
-        title="Contributing to Suna"
-        description="Help make Suna better for everyone! We welcome contributions from the community"
+        title="Contributing to Mevo"
+        description="Help make Mevo better for everyone! We welcome contributions from the community"
         breadcrumbs={breadcrumbs}
         lastUpdated="August 2025"
         showSeparator
@@ -38,7 +38,7 @@ export default function ContributingPage() {
         <DocsBullets variant="check" spacing="default" className="mb-8">
           <DocsBulletItem
             title="Fork the Repository"
-            description="Create your own fork of the Kortix repository on GitHub"
+            description="Create your own fork of the Mevo repository on GitHub"
           />
           <DocsBulletItem
             title="Clone Locally"
@@ -59,7 +59,7 @@ export default function ContributingPage() {
         <DocsBody className="mb-8">
           <h2 id="ways-to-contribute">Ways to Contribute</h2>
           <p className="text-lg mb-6">
-            There are many ways to help improve Kortix:
+            There are many ways to help improve Mevo:
           </p>
         </DocsBody>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -212,26 +212,12 @@ export default function ContributingPage() {
           <DocsCard
             title="Discord Community"
             description="Join our Discord server for real-time discussions and support"
-            clickable
-            actions={[
-              { 
-                label: 'Join Discord', 
-                variant: 'default',
-                onClick: () => window.open('https://discord.gg/Py6pCBUUPw', '_blank')
-              }
-            ]}
+            className="bg-accent/50 border-border"
           />
           <DocsCard
             title="GitHub Issues"
             description="Report bugs, request features, and other issues"
-            clickable
-            actions={[
-              { 
-                label: 'View Discussions', 
-                variant: 'default',
-                onClick: () => window.open('https://github.com/kortix-ai/suna/issues', '_blank')
-              }
-            ]}
+            className="bg-accent/50 border-border"
           />
         </div>
       </section>

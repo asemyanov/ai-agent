@@ -40,7 +40,7 @@ const PENDING_PROMPT_KEY = 'pendingAgentPrompt';
 const dashboardTourSteps: Step[] = [
   {
     target: '[data-tour="chat-input"]',
-    content: 'Type your questions or tasks here. Suna can help with research, analysis, automation, and much more.',
+    content: 'Type your questions or tasks here. Agent can help with research, analysis, automation, and much more.',
     title: 'Start a Conversation',
     placement: 'top',
     disableBeacon: true,
@@ -113,7 +113,7 @@ export function DashboardContent() {
   const selectedAgent = selectedAgentId
     ? agents.find(agent => agent.agent_id === selectedAgentId)
     : null;
-  const displayName = selectedAgent?.name || 'Suna';
+  const displayName = selectedAgent?.name || 'Default Agent';
   const agentAvatar = undefined;
   const isSunaAgent = selectedAgent?.metadata?.is_suna_default || false;
 

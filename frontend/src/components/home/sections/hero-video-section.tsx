@@ -9,14 +9,15 @@ export function HeroVideoSection() {
     >
       <SectionHeader>
         <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-center text-balance pb-1">
-          Watch Intelligence in Motion
+          MEVO: the 1st AI agent built for healthcare.
         </h2>
         <p className="text-muted-foreground text-center text-balance font-medium">
-          Watch how Suna executes complex workflows with precision and autonomy
+          
+          From clinical research to hospital management, our HIPAA-compliant AI works as your trusted digital colleague—understanding medical context, following protocols, and delivering results that matter.
         </p>
       </SectionHeader>
 
-      <div className="relative px-6">
+      {/* <div className="relative px-6">
         <div className="relative w-full max-w-3xl mx-auto shadow-xl rounded-2xl overflow-hidden">
           <HeroVideoDialog
             className="block dark:hidden"
@@ -33,7 +34,7 @@ export function HeroVideoSection() {
             thumbnailAlt="Hero Video"
           />
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

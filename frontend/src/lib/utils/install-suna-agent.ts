@@ -25,11 +25,11 @@ async function installSunaForNewUser(userId: string) {
       return true;
     } else {
       const errorData = await response.json().catch(() => ({}));
-      console.error(`Failed to install Suna agent for user:`, errorData);
+      console.error(`Failed to install MEVO AI agent for user:`, errorData);
       return false;
     }
   } catch (error) {
-    console.error('Error installing Suna agent for new user:', error);
+    console.error('Error installing MEVO AI agent for new user:', error);
     return false;
   }
 }

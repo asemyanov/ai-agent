@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Bot } from 'lucide-react';
 import { useAgent } from '@/hooks/react-query/agents/use-agents';
 import { KortixLogo } from '@/components/sidebar/kortix-logo';
 import { DynamicIcon } from 'lucide-react/dynamic';
@@ -16,7 +17,7 @@ export const AgentAvatar: React.FC<AgentAvatarProps> = ({
   agentId, 
   size = 16, 
   className = "", 
-  fallbackName = "Suna" 
+  fallbackName = "MEVO" 
 }) => {
   const { data: agent, isLoading } = useAgent(agentId || '');
 
@@ -30,7 +31,7 @@ export const AgentAvatar: React.FC<AgentAvatarProps> = ({
   }
 
   if (!agent && !agentId) {
-    return <KortixLogo size={size} />;
+    return null;
   }
 
   const isSuna = agent?.metadata?.is_suna_default;
@@ -78,7 +79,7 @@ interface AgentNameProps {
 
 export const AgentName: React.FC<AgentNameProps> = ({ 
   agentId, 
-  fallback = "Suna" 
+  fallback = "MEVO" 
 }) => {
   const { data: agent, isLoading } = useAgent(agentId || '');
 

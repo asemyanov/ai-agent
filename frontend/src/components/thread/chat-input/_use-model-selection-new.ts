@@ -65,15 +65,15 @@ export const useModelSelection = () => {
     if (!modelsData?.models || isLoadingModels) {
       models = [
         { 
-          id: 'moonshotai/kimi-k2', 
-          label: 'Kimi K2', 
+          id: 'openrouter/google/gemini-2.5-flash', 
+          label: 'Clerk', 
           requiresSubscription: false,
           priority: 100,
           recommended: true
         },
         { 
-          id: 'claude-sonnet-4', 
-          label: 'Claude Sonnet 4', 
+          id: 'openrouter/google/gemini-2.5-flash', 
+          label: 'Clerk', 
           requiresSubscription: true, 
           priority: 100,
           recommended: true
