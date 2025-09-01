@@ -30,7 +30,7 @@ stripe.api_key = config.STRIPE_SECRET_KEY
 TOKEN_PRICE_MULTIPLIER = 2.0
 
 # Minimum credits required to allow a new request when over subscription limit
-CREDIT_MIN_START_DOLLARS = 0.20
+CREDIT_MIN_START_DOLLARS = 0.01
 
 # Credit packages with Stripe price IDs
 # TEMPORARILY DISABLED - Stripe credits feature causing startup issues
