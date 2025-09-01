@@ -26,7 +26,8 @@ def test_model_limits():
         'grok-4', 
         'unknown-model',
         'anthropic/claude-sonnet-4-20250514',
-        'openai/gpt-5-mini'
+        'openrouter/openai/gpt-5-mini'
+        'openrouter/google/gemini-2.5-flash'
     ]
     
     for model in test_models:
