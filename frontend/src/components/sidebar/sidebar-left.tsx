@@ -225,7 +225,7 @@ export function SidebarLeft({
                           'bg-accent text-accent-foreground font-medium': pathname === '/agents' && searchParams.get('tab') === 'marketplace',
                         })} asChild>
                           <Link href="/agents?tab=marketplace" onClick={() => isMobile && setOpenMobile(false)}>
-                            <span>Explore</span>
+                            <span>Marketplace</span>
                           </Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>

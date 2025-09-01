@@ -401,7 +401,7 @@ const TOOL_DISPLAY_NAMES = new Map([
   ['create-agent-workflow', 'Creating Agent Workflow'],
   ['activate-agent-workflow', 'Activating Agent Workflow'],
   ['create-agent-scheduled-trigger', 'Creating Scheduled Trigger'],
-  ['list-agent-workflows', 'Listing Agent Workflows'],
+  ['list-agent-workflows', 'Listing Agent Workflows/Playbooks'],
   ['list-agent-scheduled-triggers', 'Listing Agent Scheduled Triggers'],
 ]);
 

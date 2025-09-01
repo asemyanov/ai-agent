@@ -152,9 +152,9 @@ export default function ListAgentWorkflowsToolView({
               <div className="p-4 space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="space-y-1">
-                    <h3 className="text-lg font-semibold text-foreground">Agent Workflows</h3>
+                    <h3 className="text-lg font-semibold text-foreground">Agent Playbooks</h3>
                     <p className="text-sm text-muted-foreground">
-                      {total_count} workflow{total_count !== 1 ? 's' : ''} configured for this agent
+                      {total_count} Playbook workflow{total_count !== 1 ? 's' : ''} configured for this agent
                     </p>
                   </div>
                 </div>
@@ -175,9 +175,9 @@ export default function ListAgentWorkflowsToolView({
                   <FileText className="h-8 w-8 text-blue-500" />
                 </div>
                 <div className="space-y-2">
-                  <p className="text-sm font-medium text-foreground">No workflows found</p>
+                  <p className="text-sm font-medium text-foreground">No Playbooks found</p>
                   <p className="text-xs text-muted-foreground">
-                    This agent doesn't have any workflows configured yet.
+                    This agent doesn't have any Playbook workflows configured yet.
                   </p>
                 </div>
               </div>
@@ -187,7 +187,7 @@ export default function ListAgentWorkflowsToolView({
           <div className="p-4 text-center">
             <div className="space-y-2">
               <AlertTriangle className="h-8 w-8 text-red-500 mx-auto" />
-              <p className="text-sm font-medium text-foreground">Failed to load workflows</p>
+              <p className="text-sm font-medium text-foreground">Failed to load Playbooks</p>
               <p className="text-xs text-muted-foreground">Please try again or check the agent configuration.</p>
             </div>
           </div>

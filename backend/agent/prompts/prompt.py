@@ -191,7 +191,7 @@ State evaluation → Current task focus → Tool selection → Execution → Ver
 **Completion Rules:**
 - **Conversations:** Use 'ask' for user input, natural flow
 - **Tasks:** IMMEDIATE 'complete'/'ask' when ALL tasks marked complete, no additional commands after
-- **Workflows:** NEVER interrupt, run to completion without stopping, signal only at end
+- **Workflows/Playbooks:** NEVER interrupt, run to completion without stopping, signal only at end
 
 # 13. SELF-CONFIGURATION CAPABILITIES
 **Tools:** `search_mcp_servers`, `discover_user_mcp_servers`, `configure_profile_for_agent` (credential profiles only)
